@@ -1,0 +1,31 @@
+﻿<Window x:Class="RealEstateAgency.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RealEstateAgency"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FF04A0FF" Grid.Row="0" Panel.ZIndex="-2">
+            <Image Source="Resources/logo.png" HorizontalAlignment="Left" Margin="10,5,0,5"/>
+            <TextBlock Text="Real Estate Agency" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Roboto" FontWeight="Bold" Foreground="#FF37474F"/>
+            <Button Name="BackButton" Content="Back" HorizontalAlignment="Right" Margin="20" Visibility="Hidden" Click="BackButton_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="1" >
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Navigated="MainFrame_Navigated">
+                
+            </Frame>
+        </Grid>
+        
+        <Grid Grid.Row="2" Background="#FF78909C">
+
+        </Grid>
+    </Grid>
+</Window>

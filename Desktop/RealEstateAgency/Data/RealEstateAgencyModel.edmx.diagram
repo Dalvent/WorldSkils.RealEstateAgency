@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c816a8821a2f4fbcb5fc87346048fddf" Name="Diagram1">
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Client" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Deal" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Demand" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Estate" Width="1.5" PointX="10" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Filter" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Flat" Width="1.5" PointX="7.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.FlatFilter" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.House" Width="1.5" PointX="7.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.HouseFilter" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Land_plot" Width="1.5" PointX="7.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.LandPlotFilter" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Realtor" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Supply" Width="1.5" PointX="12.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Need_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Supply_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Deal_Need" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Demand_Filter" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Need_Realtor" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Estate_Flat" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Estate_House" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Estate_Land_plot" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Supply_Property_object" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Filter_HouseFilter" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Filter_LandPlotFilter" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_FlatFilter_Filter" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK_Supply_Realtor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
