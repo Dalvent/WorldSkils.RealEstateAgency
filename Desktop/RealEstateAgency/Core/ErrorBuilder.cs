@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RealEstateAgency
 {
-    class ErrorBuilder
+    public class ErrorBuilder
     {
         StringBuilder errors = new StringBuilder();
 

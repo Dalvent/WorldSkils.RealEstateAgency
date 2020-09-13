@@ -10,7 +10,7 @@ namespace RealEstateAgency
     /// <summary>
     /// Оболочка над основным кадром в интерфейсе программы.
     /// </summary>
-    static class FrameManager
+    public static class FrameManager
     {
         public static Frame _frame;
 

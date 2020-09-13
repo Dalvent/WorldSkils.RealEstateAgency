@@ -31,6 +31,10 @@
         </DataGrid>
         <Grid Grid.Row="1">
             <Button Name="AddButton" Content="Добавить" HorizontalAlignment="Left" Click="AddButton_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox Name="FilterTextBox" Width="200"/>
+                <Button Name="FilterButton" Content="Поиск" Click="FilterButton_Click"/>
+            </StackPanel>
             <Button Name="RemoveButton" Content="Удалить" HorizontalAlignment="Right" Click="RemoveButton_Click"/>
         </Grid>
     </Grid>

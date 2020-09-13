@@ -21,10 +21,14 @@ namespace RealEstateAgency
     /// </summary>
     public partial class RealtorsPage : Page
     {
+        IPersonFilter _filter;
         public RealtorsPage()
         {
             InitializeComponent();
-            DGridRealtors.ItemsSource = RealEstateAgencyEntities.Instance.Realtor.ToList();
+
+            var data = RealEstateAgencyEntities.Instance.Realtor.ToArray();
+            DGridRealtors.ItemsSource = data;
+            _filter = new LevenshteinPersonFilter(data, 3);
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -79,6 +83,11 @@ namespace RealEstateAgency
         {
             RealEstateAgencyEntities.Instance.ChangeTracker.Entries().ToList().ForEach(item => item.Reload());
             DGridRealtors.ItemsSource = RealEstateAgencyEntities.Instance.Realtor.ToList();
+        }
+
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            DGridRealtors.ItemsSource = _filter.GetFilteredPersonInfos(FilterTextBox.Text);
         }
     }
 }
