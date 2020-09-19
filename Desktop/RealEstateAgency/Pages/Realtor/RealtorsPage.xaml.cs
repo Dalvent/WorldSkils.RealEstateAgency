@@ -19,16 +19,15 @@ namespace RealEstateAgency
     /// <summary>
     /// Interaction logic for RealtorsPage.xaml
     /// </summary>
-    public partial class RealtorsPage : Page
+    public partial class RealtorsPage
     {
-        IPersonFilter _filter;
+        DGridEntityManager<Realtor> manager;
         public RealtorsPage()
         {
             InitializeComponent();
 
-            var data = RealEstateAgencyEntities.Instance.Realtor.ToArray();
-            DGridRealtors.ItemsSource = data;
-            _filter = new LevenshteinPersonFilter(data, 3);
+            IFilter filter = new LevenshteinPersonFilter(3);
+            manager = new DGridEntityManager<Realtor>(DGridRealtors, filter);
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -38,32 +37,7 @@ namespace RealEstateAgency
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItems = DGridRealtors.SelectedItems.Cast<Realtor>().ToList();
-
-            if (selectedItems.Count <= 0)
-            {
-                MessageBox.Show("Вы не выбрали не однин элемент для удаления!", "Выберите элементы",
-                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
-            }
-
-            if (MessageBox.Show($"Вы действительно хотите удалить {DGridRealtors.SelectedItems.Count} элемента",
-                "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                try
-                {
-                    RealEstateAgencyEntities.Instance.Realtor.RemoveRange(selectedItems);
-                    RealEstateAgencyEntities.Instance.SaveChanges();
-                    MessageBox.Show("Данные успешно удалены", "Успешно",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
-
-                    ReloadDBRealtor();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
+            manager.RemoveSelected();
 
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -77,17 +51,12 @@ namespace RealEstateAgency
         /// <param name="e"></param>
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            ReloadDBRealtor();
+            manager.ReloadTable();
         }
-        private void ReloadDBRealtor()
-        {
-            RealEstateAgencyEntities.Instance.ChangeTracker.Entries().ToList().ForEach(item => item.Reload());
-            DGridRealtors.ItemsSource = RealEstateAgencyEntities.Instance.Realtor.ToList();
-        }
-
+   
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            DGridRealtors.ItemsSource = _filter.GetFilteredPersonInfos(FilterTextBox.Text);
+            manager.UseFilter(FilterTextBox.Text);
         }
     }
 }

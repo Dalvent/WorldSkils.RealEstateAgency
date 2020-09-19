@@ -21,59 +21,38 @@ namespace RealEstateAgency
     /// </summary>
     public partial class AddEditRealtorPage
     {
-        private Realtor _editEntity;
-        private AddEditPageOperation _currentOperation;
+        private AddEditEntity<Data.Realtor> _addEditRealtor;
+
         /// <summary>
         /// Редактирование выбранной сущности.
         /// </summary>
-        /// <param name="editClient">В случае равентсва null страница переходет в режим создания.</param>
-        public AddEditRealtorPage(Realtor editRealtor = null)
+        /// <param name="editRaltor">В случае равентсва null страница переходет в режим создания.</param>
+        public AddEditRealtorPage(Data.Realtor editRaltor = null)
         {
             InitializeComponent();
-            if (editRealtor == null)
+
+            UserErrorCheack[] userErrorCheacks = {
+                new UserErrorCheack("Вы должны написать ФИО", IsFullNameWritten),
+                new UserErrorCheack("Вы должны указать коммисию в виде числа от 0 до 100", IsDealShareTextNormalizedPersent)
+            };
+            _addEditRealtor = new AddEditEntity<Data.Realtor>(editRaltor, userErrorCheacks);
+            _addEditRealtor.SuccsessSaved += (sender, e) =>
             {
-                _editEntity = new Realtor();
-                _currentOperation = AddEditPageOperation.Add;
-            }
-            else
-            {
-                _editEntity = editRealtor;
-                _currentOperation = AddEditPageOperation.Edit;
-            }
-            DataContext = _editEntity;
+                MessageBox.Show("Информация сохранена", "Успешно.", MessageBoxButton.OK, MessageBoxImage.Information);
+                FrameManager.GoBack();
+            };
+            DataContext = _addEditRealtor.EditEntity;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            var errors = new ErrorBuilder();
-
-            errors.AssertError(!IsFullNameWritten(),
-                "Риелтор обязан иметь полное имя!");
-            errors.AssertError(!IsDealShareTextNormalizedPersent(), 
-                "Коммисия обязана быть от 0 до 100!");
-            if (errors.IsAnyError())
-            {
-                MessageBox.Show(errors.GetMessage(), "Ошибка",
-                    MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-
-            if (_currentOperation == AddEditPageOperation.Add)
-            {
-                RealEstateAgencyEntities.Instance.Realtor.Add(_editEntity);
-            }
-
             try
             {
-                RealEstateAgencyEntities.Instance.SaveChanges();
-                MessageBox.Show("Информация сохранена");
-                FrameManager.GoBack();
+                _addEditRealtor.Save();
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                MessageBox.Show(ex.Message, "Ошибка сохранения",
-                   MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -94,12 +73,12 @@ namespace RealEstateAgency
         /// <returns></returns>
         private bool IsDealShareTextNormalizedPersent()
         {
-            if (!Single.TryParse(DealShareTextBox.Text, out float dealShareNum))
+            if(!Single.TryParse(DealShareTextBox.Text, out float dealShareNum))
             {
                 return false;
             }
 
-            if (dealShareNum < 0 || dealShareNum > 100)
+            if(dealShareNum < 0 || dealShareNum > 100)
             {
                 return false;
             }

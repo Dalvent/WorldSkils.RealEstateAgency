@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RealEstateAgency
 {
+    /// <summary>
+    /// Сохраняет строковые сообщения об ошибках.
+    /// </summary>
     public class ErrorBuilder
     {
         StringBuilder errors = new StringBuilder();
@@ -17,19 +20,23 @@ namespace RealEstateAgency
         /// <param name="message"></param>
         public void AssertError(bool condition, string message)
         {
-            if (condition)
+            if(!condition)
             {
                 errors.AppendLine(message);
             }
         }
-
+        
+        /// <summary>
+        /// Существует ли хоть
+        /// </summary>
+        /// <returns></returns>
         public bool IsAnyError()
         {
             return errors.Length > 0;
         }
 
         /// <summary>
-        /// Возращает итоговое сообщение
+        /// Возращает итоговое сообщение.
         /// </summary>
         /// <returns></returns>
         public string GetMessage()
@@ -42,6 +49,10 @@ namespace RealEstateAgency
             return GetMessage();
         }
 
+        /// <summary>
+        /// Очищает список ошибок.
+        /// </summary>
+        /// <returns></returns>
         public void Clear()
         {
             errors.Clear();

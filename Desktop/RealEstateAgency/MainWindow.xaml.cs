@@ -36,7 +36,7 @@ namespace RealEstateAgency
         {
             // Устанавливает видимость кнопки возрата в зависимости можно ли вернуться.
             // Вызывается при каждой навигации.
-            if (MainFrame.CanGoBack)
+            if(MainFrame.CanGoBack)
             {
                 BackButton.Visibility = Visibility.Visible;
             }

@@ -80,9 +80,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\IPersonFilter.cs" />
+    <Compile Include="Core\DGridGetDeleteEntities.cs" />
+    <Compile Include="Core\IFilter.cs" />
     <Compile Include="Core\LevenshteinFilter.cs" />
     <Compile Include="Core\IPerson.cs" />
+    <Compile Include="Core\UserErrorInfromation.cs" />
+    <Compile Include="Pages\Client\ClientsPage.xaml.cs">
+      <DependentUpon>ClientsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\NavigationPage.xaml.cs">
       <DependentUpon>NavigationPage.xaml</DependentUpon>
     </Compile>
@@ -93,11 +98,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Realtor\AddEditRealtorPage.xaml">
+    <Page Include="Pages\Client\ClientsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Client\ClientsPage.xaml">
+    <Page Include="Pages\Realtor\AddEditRealtorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,16 +113,13 @@
     <Compile Include="Pages\Client\AddEditClientPage.xaml.cs">
       <DependentUpon>AddEditClientPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\AddEditPageOperation.cs" />
+    <Compile Include="Core\AddEditEntity.cs" />
     <Compile Include="Pages\Realtor\AddEditRealtorPage.xaml.cs">
       <DependentUpon>AddEditRealtorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Pages\Client\ClientsPage.xaml.cs">
-      <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Client.cs">
       <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
