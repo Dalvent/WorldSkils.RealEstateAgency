@@ -1,4 +1,4 @@
-﻿using RealEstateAgency.Data;
+﻿using RealEstateAgency.Data.EF;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -28,8 +28,8 @@ namespace RealEstateAgency
         /// </summary>
         public event EventHandler SuccsessSaved;
 
-        private UserErrorCheack[] _userErrorCheacks;
-        private AddEditEntityOperation _currentOperation;
+        private readonly UserErrorCheack[] _userErrorCheacks;
+        private readonly AddEditEntityOperation _currentOperation;
 
         /// <summary>
         /// Редактирование выбранной сущности.
@@ -69,19 +69,23 @@ namespace RealEstateAgency
 
             SetEntityWhiteSpaceStringsNull(EditEntity);
 
-            if(_currentOperation == AddEditEntityOperation.Add)
-            {
-                Data.RealEstateAgencyEntities.Instance.Set<TEntity>().Add(EditEntity);
-            }
 
-            try
+            using(var db = new RealEstateAgencyEntities())
             {
-                Data.RealEstateAgencyEntities.Instance.SaveChanges();
-                SuccsessSaved.Invoke(this, new EventArgs());
-            }
-            catch
-            {
-                throw new AddEditEntitySaveException();
+                if(_currentOperation == AddEditEntityOperation.Add)
+                {
+                    db.Set<TEntity>().Add(EditEntity);
+                }
+
+                try
+                {
+                    db.SaveChanges();
+                    SuccsessSaved.Invoke(this, new EventArgs());
+                }
+                catch
+                {
+                    throw new AddEditEntitySaveException();
+                }
             }
         }
 

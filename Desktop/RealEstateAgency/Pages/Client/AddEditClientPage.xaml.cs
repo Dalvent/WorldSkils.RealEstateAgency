@@ -1,4 +1,4 @@
-﻿using RealEstateAgency.Data;
+﻿using RealEstateAgency.Data.EF;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,7 +23,7 @@ namespace RealEstateAgency
             UserErrorCheack[] userErrorCheacks = {
                 new UserErrorCheack("Email или Телефон должны быть указаны", IsPhoneOrEmailWritten)
             };
-            _addEditClient = new AddEditEntity<Data.Client>(editClient, userErrorCheacks);
+            _addEditClient = new AddEditEntity<Client>(editClient, userErrorCheacks);
             _addEditClient.SuccsessSaved += (sender, e) =>
             {
                 MessageBox.Show("Информация сохранена", "Успешно.", MessageBoxButton.OK, MessageBoxImage.Information);

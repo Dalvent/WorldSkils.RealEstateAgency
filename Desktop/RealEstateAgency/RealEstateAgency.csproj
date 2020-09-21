@@ -83,10 +83,74 @@
     <Compile Include="Core\DGridGetDeleteEntities.cs" />
     <Compile Include="Core\IFilter.cs" />
     <Compile Include="Core\LevenshteinFilter.cs" />
-    <Compile Include="Core\IPerson.cs" />
     <Compile Include="Core\UserErrorInfromation.cs" />
+    <Compile Include="Data\EF\AddressInfo.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\AgencyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgencyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\AgencyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\AgencyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgencyModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Client.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Deal.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Demand.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Estate.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Filter.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Flat.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\FlatFilter.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\House.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\HouseFilter.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\LandPlot.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\LandPlotFilter.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Realtor.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Supply.cs">
+      <DependentUpon>AgencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IEstateInfo.cs" />
+    <Compile Include="Data\IPersonInfo.cs" />
     <Compile Include="Pages\Client\ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Estate\AddEditEstatePage.xaml.cs">
+      <DependentUpon>AddEditEstatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Estate\EstatesPage.xaml.cs">
+      <DependentUpon>EstatesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\NavigationPage.xaml.cs">
       <DependentUpon>NavigationPage.xaml</DependentUpon>
@@ -99,6 +163,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Client\ClientsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Estate\AddEditEstatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Estate\EstatesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,63 +192,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Data\Client.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Deal.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Demand.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Estate.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Filter.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Flat.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\FlatFilter.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\House.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\HouseFilter.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\LandPlotFilter.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Land_plot.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\RealEstateAgencyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RealEstateAgencyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\RealEstateAgencyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\RealEstateAgencyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>RealEstateAgencyModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Realtor.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\Supply.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\sysdiagrams.cs">
-      <DependentUpon>RealEstateAgencyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Core\ErrorBuilder.cs" />
     <Compile Include="Core\FrameManager.cs" />
@@ -211,12 +226,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\RealEstateAgencyModel.edmx">
+    <EntityDeploy Include="Data\EF\AgencyModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RealEstateAgencyModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>AgencyModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\RealEstateAgencyModel.edmx.diagram">
-      <DependentUpon>RealEstateAgencyModel.edmx</DependentUpon>
+    <None Include="Data\EF\AgencyModel.edmx.diagram">
+      <DependentUpon>AgencyModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -228,16 +243,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\RealEstateAgencyModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RealEstateAgencyModel.Context.cs</LastGenOutput>
-      <DependentUpon>RealEstateAgencyModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Data\RealEstateAgencyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RealEstateAgencyModel.edmx</DependentUpon>
-      <LastGenOutput>RealEstateAgencyModel.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +259,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\EF\AgencyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AgencyModel.edmx</DependentUpon>
+      <LastGenOutput>AgencyModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\EF\AgencyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AgencyModel.edmx</DependentUpon>
+      <LastGenOutput>AgencyModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

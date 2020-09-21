@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RealEstateAgency.Data;
+using RealEstateAgency.Data.EF;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;

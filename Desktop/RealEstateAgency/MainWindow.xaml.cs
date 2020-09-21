@@ -1,5 +1,7 @@
-﻿using System;
+﻿using RealEstateAgency.Data.EF;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,7 @@ namespace RealEstateAgency
             InitializeComponent();
             FrameManager.Init(MainFrame);
             FrameManager.Navigate(new NavigationPage());
+            Database.SetInitializer(new DropCreateDatabaseAlways<RealEstateAgencyEntities>());
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

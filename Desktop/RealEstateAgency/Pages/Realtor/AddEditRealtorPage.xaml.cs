@@ -1,4 +1,4 @@
-﻿using RealEstateAgency.Data;
+﻿using RealEstateAgency.Data.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +21,13 @@ namespace RealEstateAgency
     /// </summary>
     public partial class AddEditRealtorPage
     {
-        private AddEditEntity<Data.Realtor> _addEditRealtor;
+        private readonly AddEditEntity<Realtor> _addEditRealtor;
 
         /// <summary>
         /// Редактирование выбранной сущности.
         /// </summary>
         /// <param name="editRaltor">В случае равентсва null страница переходет в режим создания.</param>
-        public AddEditRealtorPage(Data.Realtor editRaltor = null)
+        public AddEditRealtorPage(Realtor editRaltor = null)
         {
             InitializeComponent();
 
@@ -35,7 +35,7 @@ namespace RealEstateAgency
                 new UserErrorCheack("Вы должны написать ФИО", IsFullNameWritten),
                 new UserErrorCheack("Вы должны указать коммисию в виде числа от 0 до 100", IsDealShareTextNormalizedPersent)
             };
-            _addEditRealtor = new AddEditEntity<Data.Realtor>(editRaltor, userErrorCheacks);
+            _addEditRealtor = new AddEditEntity<Realtor>(editRaltor, userErrorCheacks);
             _addEditRealtor.SuccsessSaved += (sender, e) =>
             {
                 MessageBox.Show("Информация сохранена", "Успешно.", MessageBoxButton.OK, MessageBoxImage.Information);

@@ -1,4 +1,4 @@
-﻿using RealEstateAgency.Data;
+﻿using RealEstateAgency.Data.EF;
 using System;
 using System.Linq;
 using System.Windows;
@@ -10,17 +10,20 @@ namespace RealEstateAgency
     /// Реализует удаление, просмотр и фильтрацию для таблицы аргумента.
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    class DGridEntityManager<TEntity> where TEntity : class, new()
+    class DGridEntityManager<TEntity> where TEntity : class
     {
-        private DataGrid _entitiesDGrid;
-        private IFilter _filter;
+        private readonly DataGrid _entitiesDGrid;
+        private readonly IFilter _filter;
         public DGridEntityManager(DataGrid entitiesDGrid, IFilter filter)
         {
-            var data = RealEstateAgencyEntities.Instance.Set<TEntity>().ToArray();
-            _entitiesDGrid = entitiesDGrid;
-            _entitiesDGrid.ItemsSource = data;
-            _filter = filter;
-            filter.Context = data;
+            using(var db = new RealEstateAgencyEntities())
+            {
+                var data = db.Set<TEntity>().ToArray();
+                _entitiesDGrid = entitiesDGrid;
+                _entitiesDGrid.ItemsSource = data;
+                _filter = filter;
+                filter.Context = data;
+            }
         }
 
         /// <summary>
@@ -42,10 +45,14 @@ namespace RealEstateAgency
             {
                 try
                 {
-                    RealEstateAgencyEntities.Instance.Set<TEntity>().RemoveRange(selectedItems);
-                    RealEstateAgencyEntities.Instance.SaveChanges();
+                    using(var db = new RealEstateAgencyEntities())
+                    {
+                        db.Set<TEntity>().RemoveRange(selectedItems);
+                        db.SaveChanges();
+                    }
+                    
                     MessageBox.Show("Данные успешно удалены", "Успешно",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBoxButton.OK, MessageBoxImage.Information);
 
                     ReloadTable();
                 }
@@ -62,8 +69,11 @@ namespace RealEstateAgency
         /// </summary>
         public void ReloadTable()
         {
-            RealEstateAgencyEntities.Instance.ChangeTracker.Entries().ToList().ForEach(item => item.Reload());
-            _entitiesDGrid.ItemsSource = RealEstateAgencyEntities.Instance.Set<TEntity>().ToArray();
+            using(var db = new RealEstateAgencyEntities())
+            {
+                db.ChangeTracker.Entries().ToList().ForEach(item => item.Reload());
+                _entitiesDGrid.ItemsSource = db.Set<TEntity>().ToArray();
+            }
         }
 
         /// <summary>
