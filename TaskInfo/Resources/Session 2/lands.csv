@@ -1,4 +1,4 @@
-Id,Address_City,Address_Street,Address_House,Address_Number,Coordinate_latitude,Coordinate_longitude,TotalArea
-12,РўСЋРјРµРЅСЊ,Р›СѓРіРѕРІРѕРµ,,,0,0,20.3
-13,РўСЋРјРµРЅСЊ,РђР»РµРєСЃРµРµРІСЃРєРёР№ С…СѓС‚РѕСЂ,,,0,0,12.45
-14,РўСЋРјРµРЅСЊ,РЎСѓС…РѕРґРѕР»СЊСЃРєРёР№ РјРєСЂ,,,0,0,12
+Id;Address_City;Address_Street;Address_House;Address_Number;Coordinate_latitude;Coordinate_longitude;TotalArea
+12;Тюмень;Луговое;;;0;0;20.мар
+13;Тюмень;Алексеевский хутор;;;0;0;дек.45
+14;Тюмень;Суходольский мкр;;;0;0;12

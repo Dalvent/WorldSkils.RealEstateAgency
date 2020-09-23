@@ -9,14 +9,10 @@ namespace RealEstateAgency
     public interface IFilter
     {
         /// <summary>
-        /// Коллекция для фильтрации.
-        /// </summary>
-        IList<object> Context { get; set; }
-        /// <summary>
         /// Фитльтрация.
         /// </summary>
         /// <param name="pattern">Текстовый шаблон для фильтрации.</param>
         /// <returns></returns>
-        IList<object> GetFilteredPersonInfos(string pattern);
+        IList<T> Filter<T>(IList<T> collection, string pattern);
     }
 }

@@ -23,6 +23,7 @@ namespace RealEstateAgency.Data
         public decimal Commission { get; set; }
 
         public virtual Demand Demand { get; set; }
+
         public virtual Supply Supply { get; set; }
     }
 }

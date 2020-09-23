@@ -12,7 +12,7 @@ namespace RealEstateAgency
     /// <summary>
     /// Статус для страниц, где можно, как создавать, так и редактировать.
     /// </summary>
-    enum AddEditEntityOperation  
+    enum AddEditEntityOperation
     {
         Add, Edit
     }
@@ -70,22 +70,19 @@ namespace RealEstateAgency
             SetEntityWhiteSpaceStringsNull(EditEntity);
 
 
-            using(var db = new AgencyModel())
+            if(_currentOperation == AddEditEntityOperation.Add)
             {
-                if(_currentOperation == AddEditEntityOperation.Add)
-                {
-                    db.Set<TEntity>().Add(EditEntity);
-                }
+                AgencyModel.Instance.Set<TEntity>().Add(EditEntity);
+            }
 
-                try
-                {
-                    db.SaveChanges();
-                    SuccsessSaved.Invoke(this, new EventArgs());
-                }
-                catch
-                {
-                    throw new AddEditEntitySaveException();
-                }
+            try
+            {
+                AgencyModel.Instance.SaveChanges();
+                SuccsessSaved.Invoke(this, new EventArgs());
+            }
+            catch
+            {
+                throw new AddEditEntitySaveException();
             }
         }
 

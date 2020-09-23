@@ -12,27 +12,30 @@ namespace RealEstateAgency.Data
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int DemandId { get; set; }
+        public double? MinArea { get; set; }
+        public double? MaxArea { get; set; }
+        public int? MinCoordinateLatitude { get; set; }
+        public int? MaxCoordinateLatitude { get; set; }
+        public int? MinCoordinateLongitude { get; set; }
+        public int? MaxCoordinateLongitude { get; set; }
+        public string Street { get; set; }
 
-        public int Address { get; set; }
+        [StringLength(50)]
+        public string City { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal MinPrice { get; set; }
+        public decimal? MinPrice { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal MaxPrice { get; set; }
+        public decimal? MaxPrice { get; set; }
 
-        public double MinArea { get; set; }
-
-        public double MaxArea { get; set; }
-
-        public virtual AddressInfo AddressInfo { get; set; }
 
         public virtual Demand Demand { get; set; }
+
+        public virtual FlatFilter FlatFilter { get; set; }
 
         public virtual HouseFilter HouseFilter { get; set; }
 
         public virtual LandPlotFilter LandPlotFilter { get; set; }
-
-        public virtual FlatFilter FlatFilter { get; set; }
     }
 }

@@ -7,12 +7,7 @@ namespace RealEstateAgency.Data
     using System.Data.Entity.Spatial;
 
     [Table("LandPlotFilter")]
-    public partial class LandPlotFilter
+    public partial class LandPlotFilter : Filter
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int DemandId { get; set; }
-
-        public virtual Filter Filter { get; set; }
     }
 }

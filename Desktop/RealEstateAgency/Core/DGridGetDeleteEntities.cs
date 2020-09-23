@@ -1,5 +1,7 @@
 ﻿using RealEstateAgency.Data;
 using System;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,14 +18,10 @@ namespace RealEstateAgency
         private readonly IFilter _filter;
         public DGridEntityManager(DataGrid entitiesDGrid, IFilter filter)
         {
-            using(var db = new AgencyModel())
-            {
-                var data = db.Set<TEntity>().ToArray();
-                _entitiesDGrid = entitiesDGrid;
-                _entitiesDGrid.ItemsSource = data;
-                _filter = filter;
-                filter.Context = data;
-            }
+            var data = AgencyModel.Instance.Set<TEntity>().ToList();
+             _entitiesDGrid = entitiesDGrid;
+            _entitiesDGrid.ItemsSource = data;
+            _filter = filter;
         }
 
         /// <summary>
@@ -45,11 +43,8 @@ namespace RealEstateAgency
             {
                 try
                 {
-                    using(var db = new AgencyModel())
-                    {
-                        db.Set<TEntity>().RemoveRange(selectedItems);
-                        db.SaveChanges();
-                    }
+                    AgencyModel.Instance.Set<TEntity>().RemoveRange(selectedItems);
+                    AgencyModel.Instance.SaveChanges();
                     
                     MessageBox.Show("Данные успешно удалены", "Успешно",
                     MessageBoxButton.OK, MessageBoxImage.Information);
@@ -69,11 +64,8 @@ namespace RealEstateAgency
         /// </summary>
         public void ReloadTable()
         {
-            using(var db = new AgencyModel())
-            {
-                db.ChangeTracker.Entries().ToList().ForEach(item => item.Reload());
-                _entitiesDGrid.ItemsSource = db.Set<TEntity>().ToArray();
-            }
+            AgencyModel.Instance.ChangeTracker.Entries().ToList().ForEach(item => item.Reload());
+            _entitiesDGrid.ItemsSource = AgencyModel.Instance.Set<TEntity>().ToList();
         }
 
         /// <summary>
@@ -81,7 +73,8 @@ namespace RealEstateAgency
         /// </summary>
         public void UseFilter(string pattern)
         {
-            _entitiesDGrid.ItemsSource = _filter.GetFilteredPersonInfos(pattern).Cast<TEntity>();
+            _entitiesDGrid.ItemsSource = _filter.Filter(AgencyModel
+                .Instance.Set<TEntity>().ToList(), pattern).Cast<TEntity>();
         }
     }
 }

@@ -84,7 +84,6 @@
     <Compile Include="Core\IFilter.cs" />
     <Compile Include="Core\LevenshteinFilter.cs" />
     <Compile Include="Core\UserErrorInfromation.cs" />
-    <Compile Include="Data\AddressInfo.cs" />
     <Compile Include="Data\AgencyModel.cs" />
     <Compile Include="Data\Client.cs" />
     <Compile Include="Data\Deal.cs" />

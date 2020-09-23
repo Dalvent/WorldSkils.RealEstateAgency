@@ -7,16 +7,10 @@ namespace RealEstateAgency.Data
     using System.Data.Entity.Spatial;
 
     [Table("House")]
-    public partial class House
+    public partial class House : Estate
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SupplyId { get; set; }
-
+        public int? HouseNum { get; set; }
         public int FloorCount { get; set; }
-
         public int RoomCount { get; set; }
-
-        public virtual Estate Estate { get; set; }
     }
 }

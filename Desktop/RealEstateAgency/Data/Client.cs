@@ -17,6 +17,7 @@ namespace RealEstateAgency.Data
         }
 
         public int Id { get; set; }
+
         [StringLength(16)]
         public string Phone { get; set; }
 

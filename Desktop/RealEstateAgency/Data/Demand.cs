@@ -15,6 +15,7 @@ namespace RealEstateAgency.Data
             Deal = new HashSet<Deal>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         public int ClientId { get; set; }

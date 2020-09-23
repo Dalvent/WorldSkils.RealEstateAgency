@@ -7,20 +7,16 @@ namespace RealEstateAgency.Data
     using System.Data.Entity.Spatial;
 
     [Table("HouseFilter")]
-    public partial class HouseFilter
+    public partial class HouseFilter : Filter
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int DemandId { get; set; }
+        public int? HouseNum { get; set; }
 
-        public int MinFloorCount { get; set; }
+        public int? MinFloorCount { get; set; }
 
-        public int MaxFloorCount { get; set; }
+        public int? MaxFloorCount { get; set; }
 
-        public int MinRoomCount { get; set; }
+        public int? MinRoomCount { get; set; }
 
-        public int MaxRoomCount { get; set; }
-
-        public virtual Filter Filter { get; set; }
+        public int? MaxRoomCount { get; set; }
     }
 }

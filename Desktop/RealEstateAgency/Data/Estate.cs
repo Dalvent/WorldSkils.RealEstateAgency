@@ -15,13 +15,16 @@ namespace RealEstateAgency.Data
 
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
+        public float? Area { get; set; }
 
-        public int Address { get; set; }
+        public int? CoordinateLatitude { get; set; }
+        public int? CoordinateLongitude { get; set; }
 
-        public double Area { get; set; }
+        [StringLength(50)]
+        public string City { get; set; }
 
-        public virtual AddressInfo AddressInfo { get; set; }
-
+        [StringLength(50)]
+        public string Street { get; set; }
         public virtual Flat Flat { get; set; }
 
         public virtual House House { get; set; }

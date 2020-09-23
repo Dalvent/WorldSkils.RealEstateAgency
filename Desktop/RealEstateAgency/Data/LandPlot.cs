@@ -7,12 +7,7 @@ namespace RealEstateAgency.Data
     using System.Data.Entity.Spatial;
 
     [Table("LandPlot")]
-    public partial class LandPlot
+    public partial class LandPlot : Estate
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SupplyId { get; set; }
-
-        public virtual Estate Estate { get; set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using RealEstateAgency.Data;
-using RealEstateAgency.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,21 +26,30 @@ namespace RealEstateAgency
         /// Необходимое кол-во совподений для попадания в подходящие значения.
         /// </summary>
         public int RequiredOverlap { get; set; }
-        public IList<object> Context { get; set; }
-
-        public IList<object> GetFilteredPersonInfos(string pattern)
+        public IList<T> Filter<T>(IList<T> collection, string pattern)
         {
-            var result = new List<Person>();
+            if(!typeof(T).IsSubclassOf(typeof(Person)))
+            {
+                throw new ArgumentException($"LevenshteinPersonFilter can filtered only person subclasses.");
+            }
 
-            foreach(Person item in Context)
+            var filteredPersons = FilterPersons(collection.Cast<Person>().ToList(), pattern);
+            return filteredPersons.Cast<T>().ToList();
+        }
+
+        public IList<Person> FilterPersons(IList<Person> persons, string pattern)
+        {
+            IList<Person> filteredPersons = new List<Person>();
+
+            foreach(Person item in persons)
             {
                 if(LevenshteinPersonInfo(item, pattern))
                 {
-                    result.Add(item);
+                    filteredPersons.Add(item);
                 }
             }
 
-            return (IList<object>)result;
+            return filteredPersons;
         }
 
         /// <summary>

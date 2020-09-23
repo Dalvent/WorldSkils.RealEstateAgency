@@ -12,35 +12,24 @@ namespace RealEstateAgency.Data
         {
         }
 
-        public virtual DbSet<AddressInfo> AddressInfos { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<Deal> Deals { get; set; }
-        public virtual DbSet<Demand> Demands { get; set; }
-        public virtual DbSet<Estate> Estates { get; set; }
-        public virtual DbSet<Filter> Filters { get; set; }
-        public virtual DbSet<Flat> Flats { get; set; }
-        public virtual DbSet<FlatFilter> FlatFilters { get; set; }
-        public virtual DbSet<House> Houses { get; set; }
-        public virtual DbSet<HouseFilter> HouseFilters { get; set; }
-        public virtual DbSet<LandPlot> LandPlots { get; set; }
-        public virtual DbSet<LandPlotFilter> LandPlotFilters { get; set; }
-        public virtual DbSet<Realtor> Realtors { get; set; }
-        public virtual DbSet<Supply> Supplies { get; set; }
+        public static AgencyModel Instance { get; } = new AgencyModel();
+
+        public virtual DbSet<Client> Client { get; set; }
+        public virtual DbSet<Deal> Deal { get; set; }
+        public virtual DbSet<Demand> Demand { get; set; }
+        public virtual DbSet<Estate> Estate { get; set; }
+        public virtual DbSet<Filter> Filter { get; set; }
+        public virtual DbSet<Flat> Flat { get; set; }
+        public virtual DbSet<FlatFilter> FlatFilter { get; set; }
+        public virtual DbSet<House> House { get; set; }
+        public virtual DbSet<HouseFilter> HouseFilter { get; set; }
+        public virtual DbSet<LandPlot> LandPlot { get; set; }
+        public virtual DbSet<LandPlotFilter> LandPlotFilter { get; set; }
+        public virtual DbSet<Realtor> Realtor { get; set; }
+        public virtual DbSet<Supply> Supply { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AddressInfo>()
-                .HasMany(e => e.Estate)
-                .WithRequired(e => e.AddressInfo)
-                .HasForeignKey(e => e.Address)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<AddressInfo>()
-                .HasMany(e => e.Filter)
-                .WithRequired(e => e.AddressInfo)
-                .HasForeignKey(e => e.Address)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Client>()
                 .Property(e => e.Phone)
                 .IsFixedLength();
@@ -69,6 +58,15 @@ namespace RealEstateAgency.Data
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Estate>()
+                .HasOptional(e => e.Flat);
+
+            modelBuilder.Entity<Estate>()
+                .HasOptional(e => e.House);
+
+            modelBuilder.Entity<Estate>()
+                .HasOptional(e => e.LandPlot);
+
+            modelBuilder.Entity<Estate>()
                 .HasOptional(e => e.Supply)
                 .WithRequired(e => e.Estate);
 
@@ -85,28 +83,13 @@ namespace RealEstateAgency.Data
                 .WithRequired(e => e.Filter);
 
             modelBuilder.Entity<Filter>()
-                .HasOptional(e => e.FlatFilter)
-                .WithRequired(e => e.Filter);
+                .HasOptional(e => e.FlatFilter);
 
-            modelBuilder.Entity<Flat>()
-                .HasOptional(e => e.Estate)
-                .WithRequired(e => e.Flat);
+            modelBuilder.Entity<Filter>()
+                .HasOptional(e => e.HouseFilter);
 
-            modelBuilder.Entity<House>()
-                .HasOptional(e => e.Estate)
-                .WithRequired(e => e.House);
-
-            modelBuilder.Entity<HouseFilter>()
-                .HasOptional(e => e.Filter)
-                .WithRequired(e => e.HouseFilter);
-
-            modelBuilder.Entity<LandPlot>()
-                .HasOptional(e => e.Estate)
-                .WithRequired(e => e.LandPlot);
-
-            modelBuilder.Entity<LandPlotFilter>()
-                .HasOptional(e => e.Filter)
-                .WithRequired(e => e.LandPlotFilter);
+            modelBuilder.Entity<Filter>()
+                .HasOptional(e => e.LandPlotFilter);
 
             modelBuilder.Entity<Realtor>()
                 .HasMany(e => e.Supply)
