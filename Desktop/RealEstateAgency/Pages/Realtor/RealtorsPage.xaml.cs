@@ -1,4 +1,4 @@
-﻿using RealEstateAgency.Data.EF;
+﻿using RealEstateAgency.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace RealEstateAgency
     /// </summary>
     public partial class RealtorsPage
     {
-        DGridEntityManager<Realtor> manager;
+        private readonly DGridEntityManager<Realtor> manager;
         public RealtorsPage()
         {
             InitializeComponent();

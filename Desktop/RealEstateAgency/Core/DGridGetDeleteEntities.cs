@@ -1,4 +1,4 @@
-﻿using RealEstateAgency.Data.EF;
+﻿using RealEstateAgency.Data;
 using System;
 using System.Linq;
 using System.Windows;
@@ -16,7 +16,7 @@ namespace RealEstateAgency
         private readonly IFilter _filter;
         public DGridEntityManager(DataGrid entitiesDGrid, IFilter filter)
         {
-            using(var db = new RealEstateAgencyEntities())
+            using(var db = new AgencyModel())
             {
                 var data = db.Set<TEntity>().ToArray();
                 _entitiesDGrid = entitiesDGrid;
@@ -45,7 +45,7 @@ namespace RealEstateAgency
             {
                 try
                 {
-                    using(var db = new RealEstateAgencyEntities())
+                    using(var db = new AgencyModel())
                     {
                         db.Set<TEntity>().RemoveRange(selectedItems);
                         db.SaveChanges();
@@ -69,7 +69,7 @@ namespace RealEstateAgency
         /// </summary>
         public void ReloadTable()
         {
-            using(var db = new RealEstateAgencyEntities())
+            using(var db = new AgencyModel())
             {
                 db.ChangeTracker.Entries().ToList().ForEach(item => item.Reload());
                 _entitiesDGrid.ItemsSource = db.Set<TEntity>().ToArray();

@@ -84,65 +84,22 @@
     <Compile Include="Core\IFilter.cs" />
     <Compile Include="Core\LevenshteinFilter.cs" />
     <Compile Include="Core\UserErrorInfromation.cs" />
-    <Compile Include="Data\EF\AddressInfo.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\AgencyModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AgencyModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\AgencyModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\AgencyModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AgencyModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Client.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Deal.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Demand.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Estate.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Filter.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Flat.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\FlatFilter.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\House.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\HouseFilter.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\LandPlot.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\LandPlotFilter.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Realtor.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Supply.cs">
-      <DependentUpon>AgencyModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\IEstateInfo.cs" />
-    <Compile Include="Data\IPersonInfo.cs" />
+    <Compile Include="Data\AddressInfo.cs" />
+    <Compile Include="Data\AgencyModel.cs" />
+    <Compile Include="Data\Client.cs" />
+    <Compile Include="Data\Deal.cs" />
+    <Compile Include="Data\Demand.cs" />
+    <Compile Include="Data\Estate.cs" />
+    <Compile Include="Data\Filter.cs" />
+    <Compile Include="Data\Flat.cs" />
+    <Compile Include="Data\FlatFilter.cs" />
+    <Compile Include="Data\House.cs" />
+    <Compile Include="Data\HouseFilter.cs" />
+    <Compile Include="Data\LandPlot.cs" />
+    <Compile Include="Data\LandPlotFilter.cs" />
+    <Compile Include="Data\Person.cs" />
+    <Compile Include="Data\Realtor.cs" />
+    <Compile Include="Data\Supply.cs" />
     <Compile Include="Pages\Client\ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
@@ -226,13 +183,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\EF\AgencyModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AgencyModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Data\EF\AgencyModel.edmx.diagram">
-      <DependentUpon>AgencyModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -259,18 +209,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\EF\AgencyModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AgencyModel.edmx</DependentUpon>
-      <LastGenOutput>AgencyModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\EF\AgencyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AgencyModel.edmx</DependentUpon>
-      <LastGenOutput>AgencyModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

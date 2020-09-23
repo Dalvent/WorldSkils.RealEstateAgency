@@ -1,5 +1,5 @@
 ﻿using RealEstateAgency.Data;
-using RealEstateAgency.Data.EF;
+using RealEstateAgency.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,9 +31,9 @@ namespace RealEstateAgency
 
         public IList<object> GetFilteredPersonInfos(string pattern)
         {
-            var result = new List<IPersonInfo>();
+            var result = new List<Person>();
 
-            foreach(IPersonInfo item in Context)
+            foreach(Person item in Context)
             {
                 if(LevenshteinPersonInfo(item, pattern))
                 {
@@ -50,7 +50,7 @@ namespace RealEstateAgency
         /// <param name="word"></param>
         /// <param name="pattern"></param>
         /// <returns></returns>
-        private bool LevenshteinPersonInfo(IPersonInfo personInfo, string pattern)
+        private bool LevenshteinPersonInfo(Person personInfo, string pattern)
         {
             return LevenshteinWord(personInfo.FirstName, pattern) ||
                 LevenshteinWord(personInfo.LastName, pattern) ||

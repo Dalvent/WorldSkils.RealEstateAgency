@@ -1,4 +1,4 @@
-﻿using RealEstateAgency.Data.EF;
+﻿using RealEstateAgency.Data;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +10,7 @@ namespace RealEstateAgency
     /// </summary>
     public partial class AddEditClientPage : Page
     {
-        private AddEditEntity<Client> _addEditClient;
+        private readonly AddEditEntity<Client> _addEditClient;
 
         /// <summary>
         /// Редактирование выбранной сущности.

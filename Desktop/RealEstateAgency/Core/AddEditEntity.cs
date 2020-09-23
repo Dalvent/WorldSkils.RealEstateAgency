@@ -1,4 +1,4 @@
-﻿using RealEstateAgency.Data.EF;
+﻿using RealEstateAgency.Data;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -70,7 +70,7 @@ namespace RealEstateAgency
             SetEntityWhiteSpaceStringsNull(EditEntity);
 
 
-            using(var db = new RealEstateAgencyEntities())
+            using(var db = new AgencyModel())
             {
                 if(_currentOperation == AddEditEntityOperation.Add)
                 {

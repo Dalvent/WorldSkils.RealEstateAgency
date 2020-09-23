@@ -14,25 +14,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RealEstateAgency
+namespace RealEstateAgency.Pages
 {
     /// <summary>
-    /// Interaction logic for EntityPage.xaml
+    /// Interaction logic for EstatesPage.xaml
     /// </summary>
-    public partial class ClientsPage : Page
+    public partial class EstatesPage : Page
     {
-        private readonly DGridEntityManager<Client> manager;
-        public ClientsPage()
+        private readonly DGridEntityManager<Estate> manager;
+        public EstatesPage()
         {
             InitializeComponent();
-
-            IFilter filter = new LevenshteinPersonFilter(3);
-            manager = new DGridEntityManager<Client>(DGridClients, filter);
+            manager = new DGridEntityManager<Estate>(DGridEstates, null);
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            FrameManager.Navigate(new AddEditClientPage(((Button)sender).DataContext as Client));
+            //FrameManager.Navigate(new AddEditRealtorPage(((Button)sender).DataContext as Estate));
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -42,13 +40,11 @@ namespace RealEstateAgency
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            FrameManager.Navigate(new AddEditClientPage());
+            FrameManager.Navigate(new AddEditEstatePage());
         }
         /// <summary>
         /// Необходим для обновления таблицы при возрате на страницу.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             manager.ReloadTable();
@@ -56,7 +52,7 @@ namespace RealEstateAgency
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            manager.UseFilter(FilterTextBox.Text);
+            //manager.UseFilter(FilterTextBox.Text);
         }
     }
 }
