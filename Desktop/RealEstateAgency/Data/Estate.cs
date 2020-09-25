@@ -25,12 +25,5 @@ namespace RealEstateAgency.Data
 
         [StringLength(50)]
         public string Street { get; set; }
-        public virtual Flat Flat { get; set; }
-
-        public virtual House House { get; set; }
-
-        public virtual LandPlot LandPlot { get; set; }
-
-        public virtual Supply Supply { get; set; }
     }
 }

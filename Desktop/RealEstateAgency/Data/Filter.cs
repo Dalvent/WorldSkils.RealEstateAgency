@@ -31,11 +31,5 @@ namespace RealEstateAgency.Data
 
 
         public virtual Demand Demand { get; set; }
-
-        public virtual FlatFilter FlatFilter { get; set; }
-
-        public virtual HouseFilter HouseFilter { get; set; }
-
-        public virtual LandPlotFilter LandPlotFilter { get; set; }
     }
 }

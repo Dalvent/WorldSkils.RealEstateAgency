@@ -57,18 +57,9 @@ namespace RealEstateAgency.Data
                 .Property(e => e.Price)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<Estate>()
-                .HasOptional(e => e.Flat);
-
-            modelBuilder.Entity<Estate>()
-                .HasOptional(e => e.House);
-
-            modelBuilder.Entity<Estate>()
-                .HasOptional(e => e.LandPlot);
-
-            modelBuilder.Entity<Estate>()
-                .HasOptional(e => e.Supply)
-                .WithRequired(e => e.Estate);
+            modelBuilder.Entity<Estate>();
+            modelBuilder.Entity<Estate>();
+            modelBuilder.Entity<Estate>();
 
             modelBuilder.Entity<Filter>()
                 .Property(e => e.MinPrice)
@@ -82,14 +73,11 @@ namespace RealEstateAgency.Data
                 .HasOptional(e => e.Demand)
                 .WithRequired(e => e.Filter);
 
-            modelBuilder.Entity<Filter>()
-                .HasOptional(e => e.FlatFilter);
+            modelBuilder.Entity<Filter>();
 
-            modelBuilder.Entity<Filter>()
-                .HasOptional(e => e.HouseFilter);
+            modelBuilder.Entity<Filter>();
 
-            modelBuilder.Entity<Filter>()
-                .HasOptional(e => e.LandPlotFilter);
+            modelBuilder.Entity<Filter>();
 
             modelBuilder.Entity<Realtor>()
                 .HasMany(e => e.Supply)
