@@ -178,6 +178,6 @@ namespace RealEstateAgency
             }
 
             landFile.Dispose();
-        }/*/**/
+        }/* /**/
     }
 }
