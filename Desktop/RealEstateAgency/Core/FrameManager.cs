@@ -14,6 +14,8 @@ namespace RealEstateAgency
     {
         public static Frame _frame;
 
+        public static event EventHandler<EventArgs> PageChanged;
+
         /// <summary>
         /// Инициализирует класс, должен быть вызван перед остальными методами.
         /// </summary>
@@ -38,6 +40,5 @@ namespace RealEstateAgency
         {
             _frame.GoBack();
         }
-
     }
 }

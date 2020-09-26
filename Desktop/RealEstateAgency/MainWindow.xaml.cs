@@ -30,12 +30,32 @@ namespace RealEstateAgency
             InitializeComponent();
             FrameManager.Init(MainFrame);
             FrameManager.Navigate(new NavigationPage());
-            ImportEstles(@"C:\Users\dencr\source\repos\WorldSkillTask2018-RealEstateAgency\TaskInfo\Resources\Session 2");
-            Database.SetInitializer(new DropCreateDatabaseAlways<AgencyModel>());
-            AgencyModel.Instance.SaveChanges();
+            //Database.SetInitializer(new DropCreateDatabaseAlways<AgencyModel>());
+            //ImportData(@"..\..\Resources\Data");
+            //AgencyModel.Instance.SaveChanges();
+            ResurceData.Load(@"..\..\Resources");
         }
 
-        private void ImportEstles(string directoryPath)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.GoBack();
+        }
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            // Устанавливает видимость кнопки возрата в зависимости можно ли вернуться.
+            // Вызывается при каждой навигации.
+            if(MainFrame.CanGoBack)
+            {
+                BackButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BackButton.Visibility = Visibility.Hidden;
+            }
+        }
+
+        /*private void ImportData(string directoryPath)
         {
             ImportClients(directoryPath);
             ImportRealtors(directoryPath);
@@ -43,7 +63,6 @@ namespace RealEstateAgency
             ImportHouses(directoryPath);
             ImportLands(directoryPath);
         }
-
         private void ImportClients(string directoryPath)
         {
             var clientFile = new StreamReader(directoryPath + @"/clients.txt", Encoding.UTF8);
@@ -65,7 +84,6 @@ namespace RealEstateAgency
 
             clientFile.Dispose();
         }
-
         private void ImportRealtors(string directoryPath)
         {
             var realtorFile = new StreamReader(directoryPath + @"/agents.txt", Encoding.UTF8);
@@ -86,7 +104,6 @@ namespace RealEstateAgency
 
             realtorFile.Dispose();
         }
-
         private void ImportFlats(string directoryPath)
         {
             var flatFile = new StreamReader(directoryPath + @"/apartments.txt", Encoding.UTF8);
@@ -111,7 +128,6 @@ namespace RealEstateAgency
 
             flatFile.Dispose();
         }
-
         private void ImportHouses(string directoryPath)
         {
             var houseFile = new StreamReader(directoryPath + @"/houses.txt", Encoding.UTF8);
@@ -162,25 +178,6 @@ namespace RealEstateAgency
             }
 
             landFile.Dispose();
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            FrameManager.GoBack();
-        }
-
-        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
-        {
-            // Устанавливает видимость кнопки возрата в зависимости можно ли вернуться.
-            // Вызывается при каждой навигации.
-            if(MainFrame.CanGoBack)
-            {
-                BackButton.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                BackButton.Visibility = Visibility.Hidden;
-            }
-        }
+        }/*/**/
     }
 }

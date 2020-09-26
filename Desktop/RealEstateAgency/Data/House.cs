@@ -9,8 +9,8 @@ namespace RealEstateAgency.Data
     [Table("House")]
     public partial class House : Estate
     {
-        public int? HouseNum { get; set; }
         public int FloorCount { get; set; }
         public int RoomCount { get; set; }
+        public override string TypeName => "Дом";
     }
 }

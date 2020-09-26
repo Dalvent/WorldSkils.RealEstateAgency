@@ -84,8 +84,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\DGridGetDeleteEntities.cs" />
+    <Compile Include="Core\EqualsFilter.cs" />
+    <Compile Include="Core\Ex\UserActionException.cs" />
+    <Compile Include="Core\FilterWithPattern.cs" />
     <Compile Include="Core\IFilter.cs" />
+    <Compile Include="Core\LevenshteinEstleFilter.cs" />
+    <Compile Include="Core\LevenshteinPersonFilter.cs" />
     <Compile Include="Core\LevenshteinFilter.cs" />
+    <Compile Include="Core\Region.cs" />
+    <Compile Include="Core\FileDataLoader.cs" />
+    <Compile Include="Core\RegionFilter.cs" />
     <Compile Include="Core\UserErrorInfromation.cs" />
     <Compile Include="Data\AgencyModel.cs" />
     <Compile Include="Data\Client.cs" />
@@ -105,8 +113,17 @@
     <Compile Include="Pages\Client\ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Estate\AddEditEstatePage.xaml.cs">
-      <DependentUpon>AddEditEstatePage.xaml</DependentUpon>
+    <Compile Include="Pages\Estate\AddEditFlatPage.xaml.cs">
+      <DependentUpon>AddEditFlatPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Estate\AddEditHousePage.xaml.cs">
+      <DependentUpon>AddEditHousePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Estate\AddEditLandPlotPage.xaml.cs">
+      <DependentUpon>AddEditLandPlotPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Estate\AddEstleTypeChoosePage.xaml.cs">
+      <DependentUpon>AddEstleTypeChoosePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Estate\EstatesPage.xaml.cs">
       <DependentUpon>EstatesPage.xaml</DependentUpon>
@@ -125,7 +142,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Estate\AddEditEstatePage.xaml">
+    <Page Include="Pages\Estate\AddEditFlatPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Estate\AddEditHousePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Estate\AddEditLandPlotPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Estate\AddEstleTypeChoosePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,6 +240,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\districts.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -20,7 +20,10 @@ namespace RealEstateAgency.Data
 
         public int ClientId { get; set; }
 
-        public int? RealtorId { get; set; }
+        public int RealtorId { get; set; }
+
+        [Column(TypeName = "money")]
+        public decimal Price { get; set; }
 
         public virtual Client Client { get; set; }
 

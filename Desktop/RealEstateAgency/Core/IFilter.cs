@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace RealEstateAgency
 {
-    public interface IFilter
+    public interface ICollectionFilter
     {
         /// <summary>
         /// Фитльтрация.
         /// </summary>
+        /// <param name="collection">Коллекция для фильтрации.</param>
         /// <param name="pattern">Текстовый шаблон для фильтрации.</param>
         /// <returns></returns>
-        IList<T> Filter<T>(IList<T> collection, string pattern);
+        IEnumerable UseFilter(IEnumerable collection, string pattern);
     }
 }

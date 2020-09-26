@@ -22,12 +22,13 @@ namespace RealEstateAgency
     public partial class ClientsPage : Page
     {
         private readonly DGridEntityManager<Client> manager;
+        private readonly LevenshteinPersonFilter levenshteinFilter;
         public ClientsPage()
         {
             InitializeComponent();
 
-            IFilter filter = new LevenshteinPersonFilter(3);
-            manager = new DGridEntityManager<Client>(DGridClients, filter);
+            levenshteinFilter = new LevenshteinPersonFilter(3);
+            manager = new DGridEntityManager<Client>(DGridClients);
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
@@ -44,19 +45,28 @@ namespace RealEstateAgency
         {
             FrameManager.Navigate(new AddEditClientPage());
         }
+        private bool _isFirstVisibleChanged = true;
         /// <summary>
         /// Необходим для обновления таблицы при возрате на страницу.
+        /// _isFirstVisibleChanged - необходима для чтобы не было обновления при инициализации.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            manager.ReloadTable();
+            if(_isFirstVisibleChanged)
+            {
+                _isFirstVisibleChanged = false;
+                return;
+            }
+
+            if((bool)e.NewValue == true)
+            {
+                manager.ReloadTable();
+            }
         }
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
-            manager.UseFilter(FilterTextBox.Text);
+            manager.UseFilter("LevenstainPersonFilter", levenshteinFilter, FilterTextBox.Text);
         }
     }
 }

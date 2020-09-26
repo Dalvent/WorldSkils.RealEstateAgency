@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RealEstateAgency.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,11 @@ namespace RealEstateAgency
         private void ClientButton_Click(object sender, RoutedEventArgs e)
         {
             FrameManager.Navigate(new ClientsPage());
+        }
+
+        private void EstleButton_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.Navigate(new EstatesPage());
         }
     }
 }

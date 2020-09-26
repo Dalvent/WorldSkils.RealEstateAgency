@@ -1,4 +1,5 @@
-﻿using RealEstateAgency.Data;
+﻿using RealEstateAgency;
+using RealEstateAgency.Data;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -64,7 +65,7 @@ namespace RealEstateAgency
 
             if(errors.IsAnyError())
             {
-                throw new AddEditEntitySaveException(errors.GetMessage());
+                throw new UserActionException(errors.GetMessage());
             }
 
             SetEntityWhiteSpaceStringsNull(EditEntity);
@@ -82,7 +83,7 @@ namespace RealEstateAgency
             }
             catch
             {
-                throw new AddEditEntitySaveException();
+                throw;
             }
         }
 
@@ -102,17 +103,4 @@ namespace RealEstateAgency
         }
     }
 
-    /// <summary>
-    /// Ошибка выданная классом AddEditEntitySave при сохранении.
-    /// </summary>
-    [Serializable]
-    public class AddEditEntitySaveException : Exception
-    {
-        public AddEditEntitySaveException() { }
-        public AddEditEntitySaveException(string message) : base(message) { }
-        public AddEditEntitySaveException(string message, Exception inner) : base(message, inner) { }
-        protected AddEditEntitySaveException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
-    }
 }

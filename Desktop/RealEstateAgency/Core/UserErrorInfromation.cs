@@ -8,6 +8,7 @@ namespace RealEstateAgency
 { 
     /// <summary>
     /// Хранит сообщение ошибки и функциию для проверки возникла ли ошибка.
+    /// Если функция вадала false, значит проверка не пройдена.
     /// </summary>
     struct UserErrorCheack
     {

@@ -10,8 +10,9 @@
 
     <Grid>
         <StackPanel>
-            <Button Name="ReltorButton" Content="Риелторы" Click="ReltorButton_Click"/>
-            <Button Name="ClientButton" Content="Клиенты" Click="ClientButton_Click"/>
+            <Button Width="200" Name="ReltorButton" Content="Риелторы" Click="ReltorButton_Click"/>
+            <Button Width="200" Name="ClientButton" Content="Клиенты" Click="ClientButton_Click"/>
+            <Button Width="200" Name="EstleButton" Content="Недвижимость" Click="EstleButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

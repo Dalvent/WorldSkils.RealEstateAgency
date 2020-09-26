@@ -9,12 +9,9 @@ namespace RealEstateAgency.Data
     [Table("Flat")]
     public partial class Flat : Estate
     {
-        public int? HouseNum { get; set; }
-
-        public int? FlatNum { get; set; }
-
         public int Floor { get; set; }
 
         public int RoomCount { get; set; }
+        public override string TypeName => " вартира";
     }
 }

@@ -41,11 +41,16 @@ namespace RealEstateAgency.Data
 
             modelBuilder.Entity<Client>()
                 .HasMany(e => e.Supply)
-                .WithOptional(e => e.Client)
-                .HasForeignKey(e => e.RealtorId);
+                .WithRequired(e => e.Client)
+                .HasForeignKey(e => e.RealtorId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Deal>()
                 .Property(e => e.Commission)
+                .HasPrecision(19, 4);
+
+            modelBuilder.Entity<Demand>()
+                .Property(e => e.Price)
                 .HasPrecision(19, 4);
 
             modelBuilder.Entity<Demand>()
@@ -57,9 +62,9 @@ namespace RealEstateAgency.Data
                 .Property(e => e.Price)
                 .HasPrecision(19, 4);
 
-            modelBuilder.Entity<Estate>();
-            modelBuilder.Entity<Estate>();
-            modelBuilder.Entity<Estate>();
+            modelBuilder.Entity<Estate>()
+                .HasOptional(e => e.Supply)
+                .WithRequired(e => e.Estate);
 
             modelBuilder.Entity<Filter>()
                 .Property(e => e.MinPrice)
@@ -73,17 +78,20 @@ namespace RealEstateAgency.Data
                 .HasOptional(e => e.Demand)
                 .WithRequired(e => e.Filter);
 
-            modelBuilder.Entity<Filter>();
-
-            modelBuilder.Entity<Filter>();
-
-            modelBuilder.Entity<Filter>();
+            modelBuilder.Entity<Realtor>()
+                .HasMany(e => e.Demand)
+                .WithRequired(e => e.Realtor)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Realtor>()
                 .HasMany(e => e.Supply)
                 .WithRequired(e => e.Realtor)
                 .HasForeignKey(e => e.ClientId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Supply>()
+                .Property(e => e.Price)
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<Supply>()
                 .HasMany(e => e.Deal)
