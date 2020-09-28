@@ -233,7 +233,7 @@ namespace RealEstateAgency.Pages
         {
             foreach(Estate selectedEstle in manager.DisplayedEntities)
             {
-                if(selectedEstle.Supply != null)
+                if(selectedEstle.Supplies.Count != 0)
                 {
                     return false;
                 }

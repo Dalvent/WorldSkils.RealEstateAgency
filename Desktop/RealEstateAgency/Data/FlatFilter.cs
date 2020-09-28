@@ -9,9 +9,6 @@ namespace RealEstateAgency.Data
     [Table("FlatFilter")]
     public partial class FlatFilter : Filter
     {
-        public int? HouseNum { get; set; }
-
-        public int? FlatNum { get; set; }
 
         public int? MinFloor { get; set; }
 
@@ -20,5 +17,7 @@ namespace RealEstateAgency.Data
         public int? MinRoomCount { get; set; }
 
         public int? MaxRoomCount { get; set; }
+
+        public override EstleType EstleType => EstleType.Flat;
     }
 }

@@ -11,8 +11,7 @@ namespace RealEstateAgency.Data
     public abstract partial class Estate
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SupplyId { get; set; }
+        public int Id { get; set; }
 
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
@@ -52,8 +51,14 @@ namespace RealEstateAgency.Data
                 return coodrdinate;
             }
         } 
-        public abstract string TypeName { get; } 
+        public abstract EstleType EstleType { get; }
+        public string TypeName => EstleTypeConverter.ToString(EstleType);
 
-        public Supply Supply { get; set; }
+        public override string ToString()
+        {
+            return $"Стоймость: {Price}; Адрес: {FullAddress}";
+        }
+
+        public virtual ICollection<Supply> Supplies { get; set; }
     }
 }

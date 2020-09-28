@@ -15,15 +15,12 @@ namespace RealEstateAgency.Data
             Deal = new HashSet<Deal>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int Id { get; set; }
 
         public int ClientId { get; set; }
 
         public int RealtorId { get; set; }
-
-        [Column(TypeName = "money")]
-        public decimal Price { get; set; }
 
         public virtual Client Client { get; set; }
 

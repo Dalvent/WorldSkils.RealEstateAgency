@@ -21,7 +21,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Тип" Binding="{Binding TypeName}" Width="*"/>
                 <DataGridTextColumn Header="Адрес" Binding="{Binding FullAddress}" Width="*"/>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="*"/>
+                <DataGridTextColumn Header="Стоймость" Binding="{Binding Price}" Width="*"/>
                 <DataGridTextColumn Header="Координаты" Binding="{Binding CoodrinateString}" Width="*"/>
                 <DataGridTextColumn Header="Площадь" Binding="{Binding Area}" Width="*"/>
                 <DataGridTemplateColumn Width="auto">

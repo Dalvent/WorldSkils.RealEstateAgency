@@ -30,9 +30,9 @@ namespace RealEstateAgency
             InitializeComponent();
             FrameManager.Init(MainFrame);
             FrameManager.Navigate(new NavigationPage());
-            //Database.SetInitializer(new DropCreateDatabaseAlways<AgencyModel>());
-            //ImportData(@"..\..\Resources\Data");
-            //AgencyModel.Instance.SaveChanges();
+            Database.SetInitializer(new DropCreateDatabaseAlways<AgencyModel>());
+            ImportData(@"..\..\Resources\Data");
+            AgencyModel.Instance.SaveChanges();
             ResurceData.Load(@"..\..\Resources");
         }
 
@@ -55,14 +55,142 @@ namespace RealEstateAgency
             }
         }
 
-        /*private void ImportData(string directoryPath)
+        private void ImportData(string directoryPath)
         {
             ImportClients(directoryPath);
             ImportRealtors(directoryPath);
             ImportFlats(directoryPath);
             ImportHouses(directoryPath);
             ImportLands(directoryPath);
+            ImportSupplies(directoryPath);
+            ImportDemandFlat(directoryPath);
+            ImportDemandHouse(directoryPath);
+            ImportDemandLand(directoryPath);
         }
+
+        private void ImportDemandFlat(string directoryPath)
+        {
+            var demandFlatFile = new StreamReader(directoryPath + @"/apartment-demands.txt", Encoding.UTF8);
+            demandFlatFile.ReadLine();
+            while(!demandFlatFile.EndOfStream)
+            {
+                // Id,Address_City,Address_Street,Address_House,Address_Number,
+                //MinPrice,MaxPrice,AgentId,ClientId,
+                //MinArea,MaxArea,MinRooms,MaxRooms,MinFloor,MaxFloor
+                var demandFlatRow = demandFlatFile.ReadLine().Split(';');
+                var demandImport = new Demand();
+                var demandFlatFilter = new FlatFilter();
+                int index = -1;
+                demandImport.Id = Convert.ToInt32(demandFlatRow[++index]);
+                demandFlatFilter.DemandId = Convert.ToInt32(demandFlatRow[index]);
+                demandFlatFilter.City = demandFlatRow[++index] != String.Empty ? demandFlatRow[index] : null;
+                demandFlatFilter.Street = demandFlatRow[++index] != String.Empty ? demandFlatRow[index] : null;
+                demandFlatFilter.HouseNum = demandFlatRow[++index] != String.Empty ? Convert.ToInt32(demandFlatRow[index]) : new Nullable<int>();
+                demandFlatFilter.FlatNum = demandFlatRow[++index] != String.Empty ? Convert.ToInt32(demandFlatRow[index]) : new Nullable<int>();
+                demandFlatFilter.MinPrice = demandFlatRow[++index] != String.Empty ? Convert.ToDecimal(demandFlatRow[index]) : new Nullable<decimal>();
+                demandFlatFilter.MaxPrice = demandFlatRow[++index] != String.Empty ? Convert.ToDecimal(demandFlatRow[index]) : new Nullable<decimal>();
+                demandImport.RealtorId = Convert.ToInt32(demandFlatRow[++index]);
+                demandImport.ClientId = Convert.ToInt32(demandFlatRow[++index]);
+                demandFlatFilter.MinArea = demandFlatRow[++index] != String.Empty ? Convert.ToDouble(demandFlatRow[index]) : new Nullable<double>();
+                demandFlatFilter.MaxArea = demandFlatRow[++index] != String.Empty ? Convert.ToDouble(demandFlatRow[index]) : new Nullable<double>();
+                demandFlatFilter.MinRoomCount = demandFlatRow[++index] != String.Empty ? Convert.ToInt32(demandFlatRow[index]) : new Nullable<int>();
+                demandFlatFilter.MaxRoomCount = demandFlatRow[++index] != String.Empty ? Convert.ToInt32(demandFlatRow[index]) : new Nullable<int>();
+                demandFlatFilter.MinFloor = demandFlatRow[++index] != String.Empty ? Convert.ToInt32(demandFlatRow[index]) : new Nullable<int>();
+                demandFlatFilter.MaxFloor = demandFlatRow[++index] != String.Empty ? Convert.ToInt32(demandFlatRow[index]) : new Nullable<int>();
+
+                AgencyModel.Instance.Demand.Add(demandImport);
+                AgencyModel.Instance.FlatFilter.Add(demandFlatFilter);
+            }
+
+            demandFlatFile.Dispose();
+        }
+        private void ImportDemandHouse(string directoryPath)
+        {
+            var demandHouseFile = new StreamReader(directoryPath + @"/house-demands.txt", Encoding.UTF8);
+            demandHouseFile.ReadLine();
+            while(!demandHouseFile.EndOfStream)
+            {
+                // Id,Address_City,Address_Street,Address_House,Address_Number,
+                // MinPrice,MaxPrice,AgentId,ClientId,
+                // MinFloors,MaxFloors,MinArea,MaxArea,MinRooms,MaxRooms
+                var demandHouseRow = demandHouseFile.ReadLine().Split(';');
+                var demandImport = new Demand();
+                var demandHouseFilter = new HouseFilter();
+                int index = -1;
+                demandImport.Id = Convert.ToInt32(demandHouseRow[++index]);
+                demandHouseFilter.DemandId = Convert.ToInt32(demandHouseRow[index]);
+                demandHouseFilter.City = demandHouseRow[++index] != String.Empty ? demandHouseRow[index] : null;
+                demandHouseFilter.Street = demandHouseRow[++index] != String.Empty ? demandHouseRow[index] : null;
+                demandHouseFilter.HouseNum = demandHouseRow[++index] != String.Empty ? Convert.ToInt32(demandHouseRow[index]) : new Nullable<int>();
+                index++;
+                demandHouseFilter.MinPrice = demandHouseRow[++index] != String.Empty ? Convert.ToDecimal(demandHouseRow[index]) : new Nullable<decimal>();
+                demandHouseFilter.MaxPrice = demandHouseRow[++index] != String.Empty ? Convert.ToDecimal(demandHouseRow[index]) : new Nullable<decimal>();
+                demandImport.RealtorId = Convert.ToInt32(demandHouseRow[++index]);
+                demandImport.ClientId = Convert.ToInt32(demandHouseRow[++index]);
+                demandHouseFilter.MinFloorCount = demandHouseRow[++index] != String.Empty ? Convert.ToInt32(demandHouseRow[index]) : new Nullable<int>();
+                demandHouseFilter.MaxFloorCount = demandHouseRow[++index] != String.Empty ? Convert.ToInt32(demandHouseRow[index]) : new Nullable<int>();
+                demandHouseFilter.MinArea = demandHouseRow[++index] != String.Empty ? Convert.ToDouble(demandHouseRow[index]) : new Nullable<double>();
+                demandHouseFilter.MaxArea = demandHouseRow[++index] != String.Empty ? Convert.ToDouble(demandHouseRow[index]) : new Nullable<double>();
+                demandHouseFilter.MinRoomCount = demandHouseRow[++index] != String.Empty ? Convert.ToInt32(demandHouseRow[index]) : new Nullable<int>();
+                demandHouseFilter.MaxRoomCount = demandHouseRow[++index] != String.Empty ? Convert.ToInt32(demandHouseRow[index]) : new Nullable<int>();
+
+                AgencyModel.Instance.Demand.Add(demandImport);
+                AgencyModel.Instance.HouseFilter.Add(demandHouseFilter);
+            }
+
+            demandHouseFile.Dispose();
+        }
+        private void ImportDemandLand(string directoryPath)
+        {
+            var demandLandFile = new StreamReader(directoryPath + @"/land-demands.txt", Encoding.UTF8);
+            demandLandFile.ReadLine();
+            while(!demandLandFile.EndOfStream)
+            {
+                // Id;Address_City;Address_Street;Address_House;Address_Number;MinPrice;MaxPrice;AgentId;ClientId;MinArea;MaxArea
+                var demandLandRow = demandLandFile.ReadLine().Split(';');
+                var demandImport = new Demand();
+                var demandLandFilter = new LandPlotFilter();
+                int index = -1;
+                demandImport.Id = Convert.ToInt32(demandLandRow[++index]);
+                demandLandFilter.DemandId = Convert.ToInt32(demandLandRow[index]);
+                demandLandFilter.City = demandLandRow[++index] != String.Empty ? demandLandRow[index] : null;
+                demandLandFilter.Street = demandLandRow[++index] != String.Empty ? demandLandRow[index] : null;
+                index++;
+                index++;
+                demandLandFilter.MinPrice = demandLandRow[++index] != String.Empty ? Convert.ToDecimal(demandLandRow[index]) : new Nullable<decimal>();
+                demandLandFilter.MaxPrice = demandLandRow[++index] != String.Empty ? Convert.ToDecimal(demandLandRow[index]) : new Nullable<decimal>();
+                demandImport.RealtorId = Convert.ToInt32(demandLandRow[++index]);
+                demandImport.ClientId = Convert.ToInt32(demandLandRow[++index]);
+                demandLandFilter.MinArea = demandLandRow[++index] != String.Empty ? Convert.ToDouble(demandLandRow[index]) : new Nullable<double>();
+                demandLandFilter.MaxArea = demandLandRow[++index] != String.Empty ? Convert.ToDouble(demandLandRow[index]) : new Nullable<double>();
+
+                AgencyModel.Instance.Demand.Add(demandImport);
+                AgencyModel.Instance.LandPlotFilter.Add(demandLandFilter);
+            }
+
+            demandLandFile.Dispose();
+        }
+
+        private void ImportSupplies(string directoryPath)
+        {
+            var supplyFile = new StreamReader(directoryPath + @"/supplies.txt", Encoding.UTF8);
+            supplyFile.ReadLine();
+            while(!supplyFile.EndOfStream)
+            {
+                // Id;Price;AgentId;ClientId;RealEstateId
+                var clientRow = supplyFile.ReadLine().Split(';');
+                var supplyImport = new Supply();
+                supplyImport.Id = Convert.ToInt32(clientRow[0]);
+                supplyImport.Price = Convert.ToDecimal(clientRow[1]);
+                supplyImport.RealtorId = Convert.ToInt32(clientRow[2]);
+                supplyImport.ClientId = Convert.ToInt32(clientRow[3]);
+                supplyImport.EstleId = Convert.ToInt32(clientRow[4]);
+
+                AgencyModel.Instance.Supply.Add(supplyImport);
+            }
+        }
+
+
         private void ImportClients(string directoryPath)
         {
             var clientFile = new StreamReader(directoryPath + @"/clients.txt", Encoding.UTF8);
@@ -112,7 +240,7 @@ namespace RealEstateAgency
             {
                 var flatRow = flatFile.ReadLine().Split(';');
                 var flatImport = new Flat();
-                flatImport.SupplyId = Convert.ToInt32(flatRow[0]);
+                flatImport.Id = Convert.ToInt32(flatRow[0]);
                 flatImport.City = flatRow[1];
                 flatImport.Street = flatRow[2];
                 flatImport.HouseNum = Convert.ToInt32(flatRow[3]);
@@ -137,7 +265,7 @@ namespace RealEstateAgency
             {
                 var floatRow = houseFile.ReadLine().Split(';');
                 var houseImport = new House();
-                houseImport.SupplyId = Convert.ToInt32(floatRow[0]);
+                houseImport.Id = Convert.ToInt32(floatRow[0]);
                 houseImport.City = floatRow[1];
                 houseImport.Street = floatRow[2];
                 if(floatRow[3] != "")
@@ -167,7 +295,7 @@ namespace RealEstateAgency
             {
                 var floatRow = landFile.ReadLine().Split(';');
                 var landImport = new LandPlot();
-                landImport.SupplyId = Convert.ToInt32(floatRow[0]);
+                landImport.Id = Convert.ToInt32(floatRow[0]);
                 landImport.City = floatRow[1];
                 landImport.Street = floatRow[2];
                 landImport.CoordinateLatitude = Convert.ToInt32(floatRow[5]);

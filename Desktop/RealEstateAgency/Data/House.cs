@@ -11,6 +11,6 @@ namespace RealEstateAgency.Data
     {
         public int FloorCount { get; set; }
         public int RoomCount { get; set; }
-        public override string TypeName => "Дом";
+        public override EstleType EstleType => EstleType.House;
     }
 }

@@ -85,6 +85,7 @@
     </ApplicationDefinition>
     <Compile Include="Core\DGridEntityManager.cs" />
     <Compile Include="Core\EqualsFilter.cs" />
+    <Compile Include="Core\EstleType.cs" />
     <Compile Include="Core\Ex\UserActionException.cs" />
     <Compile Include="Core\FilterWithPattern.cs" />
     <Compile Include="Core\IFilter.cs" />
@@ -110,6 +111,24 @@
     <Compile Include="Data\Person.cs" />
     <Compile Include="Data\Realtor.cs" />
     <Compile Include="Data\Supply.cs" />
+    <Compile Include="Pages\Demand\AddEditDemandLandPage.xaml.cs">
+      <DependentUpon>AddEditDemandLandPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Demand\AddEditHouseDemandPage.xaml.cs">
+      <DependentUpon>AddEditHouseDemandPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Demand\AddDemandTypeChoosePage.xaml.cs">
+      <DependentUpon>AddDemandTypeChoosePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Demand\AddEditFlatDemandPage.xaml.cs">
+      <DependentUpon>AddEditFlatDemandPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Demand\DemandsPage.xaml.cs">
+      <DependentUpon>DemandsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Supply\AddEditSupplyPage.xaml.cs">
+      <DependentUpon>AddEditSupplyPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Client\ClientsPage.xaml.cs">
       <DependentUpon>ClientsPage.xaml</DependentUpon>
     </Compile>
@@ -134,6 +153,30 @@
     <Compile Include="Pages\Realtor\RealtorsPage.xaml.cs">
       <DependentUpon>RealtorsPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\Demand\AddEditDemandLandPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Demand\AddEditHouseDemandPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Demand\AddDemandTypeChoosePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Demand\AddEditFlatDemandPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Demand\DemandsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Supply\AddEditSupplyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Client\AddEditClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,8 +238,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Supply\SuppliesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Supply\SuppliesPage.xaml.cs">
+      <DependentUpon>SuppliesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -28,6 +28,7 @@ namespace RealEstateAgency
         /// Вызывается при сохранение изменений.
         /// </summary>
         public event EventHandler SuccsessSaved;
+        public event EventHandler OnAdd;
 
         private readonly UserErrorCheack[] _userErrorCheacks;
         private readonly AddEditEntityOperation _currentOperation;
@@ -49,6 +50,10 @@ namespace RealEstateAgency
                 _currentOperation = AddEditEntityOperation.Edit;
             }
             _userErrorCheacks = userErrors;
+        }
+
+        public AddEditEntity(TEntity editEntity) : this(editEntity, new UserErrorCheack[0])
+        {
         }
 
         /// <summary>
@@ -74,6 +79,7 @@ namespace RealEstateAgency
             if(_currentOperation == AddEditEntityOperation.Add)
             {
                 AgencyModel.Instance.Set<TEntity>().Add(EditEntity);
+                
             }
 
             try

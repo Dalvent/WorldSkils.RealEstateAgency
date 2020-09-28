@@ -17,5 +17,18 @@ namespace RealEstateAgency.Data
 
         [StringLength(30)]
         public string MiddleName { get; set; }
+
+        public string FullName
+        { 
+            get
+            {
+                return $"{FirstName} {LastName} {MiddleName}";
+            }
+        }
+
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }

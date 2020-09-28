@@ -9,5 +9,6 @@ namespace RealEstateAgency.Data
     [Table("LandPlotFilter")]
     public partial class LandPlotFilter : Filter
     {
+        public override EstleType EstleType => EstleType.LandPlot;
     }
 }

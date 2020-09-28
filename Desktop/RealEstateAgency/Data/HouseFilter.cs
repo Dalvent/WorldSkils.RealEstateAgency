@@ -9,7 +9,6 @@ namespace RealEstateAgency.Data
     [Table("HouseFilter")]
     public partial class HouseFilter : Filter
     {
-        public int? HouseNum { get; set; }
 
         public int? MinFloorCount { get; set; }
 
@@ -18,5 +17,7 @@ namespace RealEstateAgency.Data
         public int? MinRoomCount { get; set; }
 
         public int? MaxRoomCount { get; set; }
+
+        public override EstleType EstleType => EstleType.House;
     }
 }

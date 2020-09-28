@@ -15,7 +15,7 @@ namespace RealEstateAgency.Data
             Demand = new HashSet<Demand>();
             Supply = new HashSet<Supply>();
         }
-
+        [Key]
         public int Id { get; set; }
 
         [StringLength(16)]

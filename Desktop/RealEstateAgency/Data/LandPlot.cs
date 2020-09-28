@@ -9,6 +9,6 @@ namespace RealEstateAgency.Data
     [Table("LandPlot")]
     public partial class LandPlot : Estate
     {
-        public override string TypeName => "Участок";
+        public override EstleType EstleType => EstleType.LandPlot;
     }
 }

@@ -40,5 +40,15 @@ namespace RealEstateAgency
         {
             FrameManager.Navigate(new EstatesPage());
         }
+
+        private void SupplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.Navigate(new SuppliesPage());
+        }
+
+        private void DemandButton_Click(object sender, RoutedEventArgs e)
+        {
+            FrameManager.Navigate(new DemandsPage());
+        }
     }
 }
