@@ -83,7 +83,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\DGridGetDeleteEntities.cs" />
+    <Compile Include="Core\DGridEntityManager.cs" />
     <Compile Include="Core\EqualsFilter.cs" />
     <Compile Include="Core\Ex\UserActionException.cs" />
     <Compile Include="Core\FilterWithPattern.cs" />
