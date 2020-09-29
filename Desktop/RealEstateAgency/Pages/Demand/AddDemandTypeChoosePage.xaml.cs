@@ -37,7 +37,7 @@ namespace RealEstateAgency.Pages
 
         private void LandPlotButton_Click(object sender, RoutedEventArgs e)
         {
-            FrameManager.Navigate(new AddEditDemandLandPage());
+            FrameManager.Navigate(new AddEditLandDemandPage());
         }
     }
 }

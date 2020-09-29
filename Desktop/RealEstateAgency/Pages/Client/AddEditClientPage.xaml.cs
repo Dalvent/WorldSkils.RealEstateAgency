@@ -50,8 +50,8 @@ namespace RealEstateAgency
         /// <returns>Написан ли телефон или email.</returns>
         private bool IsPhoneOrEmailWritten()
         {
-            return !(string.IsNullOrWhiteSpace(PhoneTextBox.Text) &&
-                string.IsNullOrWhiteSpace(EmailTextBox.Text));
+            return !(string.IsNullOrWhiteSpace(PhoneInput.InputText) &&
+                string.IsNullOrWhiteSpace(EmailInput.InputText));
         }
     }
 }

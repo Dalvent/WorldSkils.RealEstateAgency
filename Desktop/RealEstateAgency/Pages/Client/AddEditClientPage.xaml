@@ -4,36 +4,26 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RealEstateAgency"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
+      xmlns:uc="clr-namespace:RealEstateAgency.Controls"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddEditClientPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel> 
+                <uc:AddEditTextBoxControl x:Name="FirstNameInput" Title="Имя" InputText="{Binding FirstName}" MaxLength="80"/>
+                <uc:AddEditTextBoxControl x:Name="LastNameInput" Title="Фамилия" InputText="{Binding LastName}"/>
+                <uc:AddEditTextBoxControl x:Name="MiddleNameInput" Title="Отчество" InputText="{Binding MiddleName}"/>
+                <uc:AddEditTextBoxControl x:Name="PhoneInput" Title="Номер" InputText="{Binding Phone}"/>
+                <uc:AddEditTextBoxControl x:Name="EmailInput" Title="Email" InputText="{Binding Email}"/>
+            </StackPanel>
+        </ScrollViewer>
 
-        <TextBlock FontSize="18" Grid.Row="0" Text="Имя" FontWeight="Bold"/>
-        <TextBlock FontSize="18" Grid.Row="1" Text="Фамиля"/>
-        <TextBlock FontSize="18" Grid.Row="2" Text="Отчество"/>
-        <TextBlock FontSize="18" Grid.Row="3" Text="Номер Телефона"/>
-        <TextBlock FontSize="18" Grid.Row="4" Text="Email"/>
-
-        <TextBox Name="FirstNameTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}" MaxLength="20"/>
-        <TextBox Name="LastNameTextBox"  Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" MaxLength="20"/>
-        <TextBox Name="MiddleNameTextBox" Grid.Row="2" Grid.Column="1" Text="{Binding MiddleName}" MaxLength="20"/>
-        <TextBox Name="PhoneTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding Phone}" MaxLength="16"/>
-        <TextBox Name="EmailTextBox" Grid.Row="4" Grid.Column="1" Text="{Binding Email}" MaxLength="60"/>
-        
-        <Button Name="SaveButton" Content="Сохранить" Grid.Row="5" Grid.Column="1" Click="SaveButton_Click"/>
+        <Button Name="SaveButton" Content="Сохранить" Grid.Row="1" HorizontalAlignment="Right" Click="SaveButton_Click"/>
     </Grid>
 </Page>

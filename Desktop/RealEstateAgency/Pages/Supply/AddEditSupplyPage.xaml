@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:RealEstateAgency.Pages"
+      xmlns:local="clr-namespace:RealEstateAgency.Pages" 
+      xmlns:uc="clr-namespace:RealEstateAgency.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddEditSupplyPage">
@@ -12,27 +13,22 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
-            <TextBlock FontSize="18" Grid.Row="0" Text="Клиент"/>
-            <TextBlock FontSize="18" Grid.Row="1" Text="Риэлтор"/>
-            <TextBlock FontSize="18" Grid.Row="2" Text="Недвижимость"/>
-            <TextBlock FontSize="18" Grid.Row="3" Text="Цена"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <uc:AddEditComboBoxControl x:Name="ClientInput" Title="Клиент" SelectedValue="{Binding Client}"/>
+                    <uc:AddEditComboBoxControl x:Name="RealtorInput" Title="Риэлтор" SelectedValue="{Binding Realtor}"/>
+                    <uc:AddEditComboBoxControl x:Name="EstateInput" Title="Недвижимость" SelectedValue="{Binding Estate}"/>
+                    <uc:AddEditTextBoxControl x:Name="PriceInput" Title="Цена" InputText="{Binding Price}"/>
+                </StackPanel>
+            </ScrollViewer>
 
-            <ComboBox Name="ClientComboBox" Grid.Row="0" Grid.Column="1" SelectedValue="{Binding Client}"  Margin="5" Width="Auto"/>
-            <ComboBox Name="RealtorComboBox" Grid.Row="1" Grid.Column="1" SelectedValue="{Binding Realtor}" Margin="5" Width="Auto"/>
-            <ComboBox Name="EstateComboBox" Grid.Row="2" Grid.Column="1" SelectedValue="{Binding Estate}" Margin="5" Width="Auto"/>
-            <TextBox Name="DealShareTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding Price}"/>
-
-            <Button Name="SaveButton" Content="Сохранить" Grid.Row="4" Grid.Column="1" Click="SaveButton_Click"/>
+            <Button Name="SaveButton" Content="Сохранить" Grid.Row="4" Grid.Column="1" Click="SaveButton_Click" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Page>

@@ -19,7 +19,7 @@ namespace RealEstateAgency.Pages
     /// <summary>
     /// Interaction logic for AddDemandLandPage.xaml
     /// </summary>
-    public partial class AddEditDemandLandPage : Page
+    public partial class AddEditLandDemandPage : Page
     {
         private readonly AddEditEntity<LandPlotFilter> _addEditLandPlotFilter;
 
@@ -27,7 +27,7 @@ namespace RealEstateAgency.Pages
         /// Редактирование выбранной сущности.
         /// </summary>
         /// <param name="editLandPlotFilter">В случае равентсва null страница переходет в режим создания.</param>
-        public AddEditDemandLandPage(LandPlotFilter editLandPlotFilter = null)
+        public AddEditLandDemandPage(LandPlotFilter editLandPlotFilter = null)
         {
             InitializeComponent();
 
@@ -41,8 +41,8 @@ namespace RealEstateAgency.Pages
                 FrameManager.GoBack();
             };
 
-            ClientComboBox.ItemsSource = AgencyModel.Instance.Client.ToList();
-            RealtorComboBox.ItemsSource = AgencyModel.Instance.Realtor.ToList();
+            ClientInput.ItemsSource = AgencyModel.Instance.Client.ToList();
+            RealtorInput.ItemsSource = AgencyModel.Instance.Realtor.ToList();
 
             if(editLandPlotFilter == null)
             {
@@ -54,14 +54,14 @@ namespace RealEstateAgency.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 _addEditLandPlotFilter.Save();
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

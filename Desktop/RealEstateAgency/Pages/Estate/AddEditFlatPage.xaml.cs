@@ -60,11 +60,11 @@ namespace RealEstateAgency.Pages
 
         private bool IsPriceWritten()
         {
-            return !String.IsNullOrEmpty(PriceTextBox.Text);
+            return !String.IsNullOrEmpty(PriceInput.InputText);
         }
         private bool IsLatitudeInInterval()
         {
-            if(!Single.TryParse(CoordinateLatitudeTextBox.Text, out float dealShareNum))
+            if(!Single.TryParse(CoordinateLatitudeInput.InputText, out float dealShareNum))
             {
                 return false;
             }
@@ -78,7 +78,7 @@ namespace RealEstateAgency.Pages
         }
         private bool IsLongitudeInInterval()
         {
-            if(!Single.TryParse(CoordinateLongitudeTextBox.Text, out float dealShareNum))
+            if(!Single.TryParse(CoordinateLongitudeInput.InputText, out float dealShareNum))
             {
                 return false;
             }

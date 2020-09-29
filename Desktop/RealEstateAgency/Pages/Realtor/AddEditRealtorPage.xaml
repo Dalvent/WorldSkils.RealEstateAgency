@@ -3,36 +3,27 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:RealEstateAgency"
+      xmlns:local="clr-namespace:RealEstateAgency" xmlns:uc="clr-namespace:RealEstateAgency.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddEditRealtorPage">
 
     <Grid>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-
-            <TextBlock FontSize="18" Grid.Row="0" Text="Имя" FontWeight="Bold"/>
-            <TextBlock FontSize="18" Grid.Row="1" Text="Фамиля"/>
-            <TextBlock FontSize="18" Grid.Row="2" Text="Отчество"/>
-            <TextBlock FontSize="18" Grid.Row="3" Text="Коммиссия"/>
-
-            <TextBox Name="FirstNameTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding FirstName}" MaxLength="20"/>
-            <TextBox Name="LastNameTextBox"  Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" MaxLength="20"/>
-            <TextBox Name="MiddleNameTextBox" Grid.Row="2" Grid.Column="1" Text="{Binding MiddleName}" MaxLength="20"/>
-            <TextBox Name="DealShareTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding DealShare}" MaxLength="3"/>
-
-            <Button Name="SaveButton" Content="Сохранить" Grid.Row="4" Grid.Column="1" Click="SaveButton_Click"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <uc:AddEditTextBoxControl x:Name="FirstNameInput" Title="Имя" InputText="{Binding FirstName}" MaxLength="80"/>
+                    <uc:AddEditTextBoxControl x:Name="LastNameInput" Title="Фамилия" InputText="{Binding LastName}" MaxLength="80"/>
+                    <uc:AddEditTextBoxControl x:Name="MiddleNameInput" Title="Отчисвто" InputText="{Binding MiddleName}" MaxLength="80"/>
+                    <uc:AddEditTextBoxControl x:Name="DealShareInput" Title="Процент коммиссии" InputText="{Binding DealShare}"/>
+                </StackPanel>
+            </ScrollViewer>
+            
+            <Button Name="SaveButton" Content="Сохранить" Grid.Row="4" Grid.Column="1" Click="SaveButton_Click" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>
 </Page>

@@ -46,7 +46,7 @@ namespace RealEstateAgency.Pages
                 FrameManager.Navigate(new AddEditHouseDemandPage((HouseFilter)filterForEdit));
                 break;
             case EstleType.LandPlot:
-                FrameManager.Navigate(new AddEditDemandLandPage((LandPlotFilter)filterForEdit));
+                FrameManager.Navigate(new AddEditLandDemandPage((LandPlotFilter)filterForEdit));
                 break;
             }
         }

@@ -83,6 +83,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\AddEditComboBoxControl.xaml.cs">
+      <DependentUpon>AddEditComboBoxControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AddEditTextBoxControl.xaml.cs">
+      <DependentUpon>AddEditTextBoxControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\DGridEntityManager.cs" />
     <Compile Include="Core\EqualsFilter.cs" />
     <Compile Include="Core\EstleType.cs" />
@@ -111,8 +117,8 @@
     <Compile Include="Data\Person.cs" />
     <Compile Include="Data\Realtor.cs" />
     <Compile Include="Data\Supply.cs" />
-    <Compile Include="Pages\Demand\AddEditDemandLandPage.xaml.cs">
-      <DependentUpon>AddEditDemandLandPage.xaml</DependentUpon>
+    <Compile Include="Pages\Demand\AddEditLandDemandPage.xaml.cs">
+      <DependentUpon>AddEditLandDemandPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Demand\AddEditHouseDemandPage.xaml.cs">
       <DependentUpon>AddEditHouseDemandPage.xaml</DependentUpon>
@@ -153,7 +159,15 @@
     <Compile Include="Pages\Realtor\RealtorsPage.xaml.cs">
       <DependentUpon>RealtorsPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="Pages\Demand\AddEditDemandLandPage.xaml">
+    <Page Include="Controls\AddEditComboBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AddEditTextBoxControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Demand\AddEditLandDemandPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

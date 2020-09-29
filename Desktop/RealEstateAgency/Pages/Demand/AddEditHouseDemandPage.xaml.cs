@@ -40,8 +40,8 @@ namespace RealEstateAgency.Pages
                 FrameManager.GoBack();
             };
 
-            ClientComboBox.ItemsSource = AgencyModel.Instance.Client.ToList();
-            RealtorComboBox.ItemsSource = AgencyModel.Instance.Realtor.ToList();
+            ClientInput.ItemsSource = AgencyModel.Instance.Client.ToList();
+            RealtorInput.ItemsSource = AgencyModel.Instance.Realtor.ToList();
 
             DataContext = _addEditHouseFilter.EditEntity;
         }

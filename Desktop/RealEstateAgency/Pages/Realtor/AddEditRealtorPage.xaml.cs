@@ -62,9 +62,9 @@ namespace RealEstateAgency
         /// <returns></returns>
         private bool IsFullNameWritten()
         {
-            return !(String.IsNullOrWhiteSpace(FirstNameTextBox.Text) ||
-                String.IsNullOrWhiteSpace(LastNameTextBox.Text) ||
-                String.IsNullOrWhiteSpace(MiddleNameTextBox.Text));
+            return !(String.IsNullOrWhiteSpace(FirstNameInput.InputText) ||
+                String.IsNullOrWhiteSpace(LastNameInput.InputText) ||
+                String.IsNullOrWhiteSpace(MiddleNameInput.InputText));
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace RealEstateAgency
         /// <returns></returns>
         private bool IsDealShareTextNormalizedPersent()
         {
-            if(!Single.TryParse(DealShareTextBox.Text, out float dealShareNum))
+            if(!Single.TryParse(DealShareInput.InputText, out float dealShareNum))
             {
                 return false;
             }

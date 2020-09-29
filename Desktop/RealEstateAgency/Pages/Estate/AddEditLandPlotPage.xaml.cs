@@ -61,11 +61,11 @@ namespace RealEstateAgency.Pages
 
         private bool IsPriceWritten()
         {
-            return !String.IsNullOrEmpty(PriceTextBox.Text);
+            return !String.IsNullOrEmpty(PriceInput.InputText);
         }
         private bool IsLatitudeInInterval()
         {
-            if(!Single.TryParse(CoordinateLatitudeTextBox.Text, out float num))
+            if(!Single.TryParse(CoordinateLatitudeInput.InputText, out float num))
             {
                 return false;
             }
@@ -79,7 +79,7 @@ namespace RealEstateAgency.Pages
         }
         private bool IsLongitudeInInterval()
         {
-            if(!Single.TryParse(CoordinateLongitudeTextBox.Text, out float num))
+            if(!Single.TryParse(CoordinateLongitudeInput.InputText, out float num))
             {
                 return false;
             }

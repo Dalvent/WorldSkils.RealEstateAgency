@@ -37,9 +37,9 @@ namespace RealEstateAgency.Pages
                 MessageBox.Show("Информация сохранена", "Успешно.", MessageBoxButton.OK, MessageBoxImage.Information);
                 FrameManager.GoBack();
             };
-            ClientComboBox.ItemsSource = AgencyModel.Instance.Client.ToList();
-            RealtorComboBox.ItemsSource = AgencyModel.Instance.Realtor.ToList();
-            EstateComboBox.ItemsSource = AgencyModel.Instance.Estate.ToList();
+            ClientInput.ItemsSource = AgencyModel.Instance.Client.ToList();
+            RealtorInput.ItemsSource = AgencyModel.Instance.Realtor.ToList();
+            EstateInput.ItemsSource = AgencyModel.Instance.Estate.ToList();
             DataContext = _addEditSupply.EditEntity;
         }
 
