@@ -31,6 +31,12 @@ namespace RealEstateAgency.Pages
             };
             manager = new DGridEntityManager<Supply>(DGridSupplies, userErrors);
         }
+
+        public SuppliesPage(ICollectionFilter startFilter, string pattern) : this()
+        {
+            manager.UseFilter("startFilter", startFilter, pattern);
+        }
+
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             FrameManager.Navigate(new AddEditSupplyPage(((Button)sender).DataContext as Supply));

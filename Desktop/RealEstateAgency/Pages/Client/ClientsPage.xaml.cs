@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency.Data;
+using RealEstateAgency.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,8 @@ namespace RealEstateAgency
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            FrameManager.Navigate(new AddEditClientPage(((Button)sender).DataContext as Client));
+            var chosenEntity = ((Button)sender).DataContext as Client;
+            FrameManager.Navigate(new AddEditClientPage(chosenEntity));
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -67,6 +69,17 @@ namespace RealEstateAgency
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {
             manager.UseFilter("LevenstainPersonFilter", levenshteinFilter, FilterTextBox.Text);
+        }
+
+        private void DemandsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var chosenEntity = ((Button)sender).DataContext as Client;
+            FrameManager.Navigate(new DemandsPage(new DemandsOfClientFIlter(chosenEntity), null));   
+        }
+        private void SuppliesButton_Click(object sender, RoutedEventArgs e)
+        {
+            var chosenEntity = ((Button)sender).DataContext as Client;
+            FrameManager.Navigate(new SuppliesPage(new SuppliesOfClientFilter(chosenEntity), null));
         }
     }
 }

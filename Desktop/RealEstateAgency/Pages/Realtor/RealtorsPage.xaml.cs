@@ -1,4 +1,5 @@
 ﻿using RealEstateAgency.Data;
+using RealEstateAgency.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,17 @@ namespace RealEstateAgency
         {
             FrameManager.Navigate(new AddEditRealtorPage());
         }
+        private void DemandsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var chosenEntity = ((Button)sender).DataContext as Realtor;
+            FrameManager.Navigate(new DemandsPage(new DemandsOfRealtorFIlter(chosenEntity), null));
+        }
+        private void SuppliesButton_Click(object sender, RoutedEventArgs e)
+        {
+            var chosenEntity = ((Button)sender).DataContext as Realtor;
+            FrameManager.Navigate(new SuppliesPage(new SuppliesOfRealtorFIlter(chosenEntity), null));
+        }
+
         private bool _isFirstVisibleChanged = true;
         /// <summary>
         /// Необходим для обновления таблицы при возрате на страницу.

@@ -31,6 +31,10 @@ namespace RealEstateAgency.Pages
             };
             manager = new DGridEntityManager<Demand>(DGridDemands, userErrors);
         }
+        public DemandsPage(ICollectionFilter startFilter, string pattern) : this()
+        {
+            manager.UseFilter("startFilter", startFilter, pattern);
+        }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {

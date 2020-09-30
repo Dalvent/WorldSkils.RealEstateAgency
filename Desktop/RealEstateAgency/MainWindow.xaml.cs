@@ -30,10 +30,14 @@ namespace RealEstateAgency
             InitializeComponent();
             FrameManager.Init(MainFrame);
             FrameManager.Navigate(new NavigationPage());
-            Database.SetInitializer(new DropCreateDatabaseAlways<AgencyModel>());
-            ImportData(@"..\..\Resources\Data");
-            AgencyModel.Instance.SaveChanges();
             ResurceData.Load(@"..\..\Resources");
+            if(MessageBox.Show("Пересоздать базу данных?", "Да/Нет", MessageBoxButton.YesNo, MessageBoxImage.Question)
+                == MessageBoxResult.Yes)
+            {
+                Database.SetInitializer(new DropCreateDatabaseAlways<AgencyModel>());
+                ImportData(@"..\..\Resources\Data");
+                AgencyModel.Instance.SaveChanges();
+            }
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
