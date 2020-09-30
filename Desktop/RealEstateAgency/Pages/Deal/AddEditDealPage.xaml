@@ -1,0 +1,44 @@
+﻿<Page x:Class="RealEstateAgency.Pages.AddEditDealPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RealEstateAgency.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditDealPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock FontSize="18" Grid.Row="0" Text="Предложение"/>
+        <TextBlock FontSize="18" Grid.Row="1" Text="Потребность"/>
+        <TextBlock FontSize="18" Grid.Row="2" Text="Коммиссия для продовца"/>
+        <TextBlock FontSize="18" Grid.Row="3" Text="Коммиссия для покупателя"/>
+        <TextBlock FontSize="18" Grid.Row="4" Text="Коммиссия для реалтора продовца"/>
+        <TextBlock FontSize="18" Grid.Row="5" Text="Коммиссия для реалтора покупателя"/>
+        <TextBlock FontSize="18" Grid.Row="6" Text="Коммиссия для компании"/>
+
+        <ComboBox Name="SupplyComboBox" Grid.Row="0" Grid.Column="1" SelectedValue="{Binding Supply}"  Margin="5" Width="Auto" SelectionChanged="SupplyComboBox_SelectionChanged"/>
+        <ComboBox Name="DemandComboBox" Grid.Row="1" Grid.Column="1" SelectedValue="{Binding Demand}" Margin="5" Width="Auto" SelectionChanged="DemandComboBox_SelectionChanged"/>
+        <TextBox Name="SupplinderCommisionTextBox" Grid.Row="2" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox Name="DemanderCommisionTextBox" Grid.Row="3" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox Name="SupplinderRealtorCommisionTextBox" Grid.Row="4" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox Name="DemanderRealtorCommisionTextBox" Grid.Row="5" Grid.Column="1" IsReadOnly="True"/>
+        <TextBox Name="ComponyCommisionTextBox" Grid.Row="6" Grid.Column="1" IsReadOnly="True"/>
+
+        <Button Name="SaveButton" Content="Сохранить" Grid.Row="7" Grid.Column="1" Click="SaveButton_Click"/>
+    </Grid>
+</Page>

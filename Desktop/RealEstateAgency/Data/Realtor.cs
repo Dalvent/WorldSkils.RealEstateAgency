@@ -18,7 +18,7 @@ namespace RealEstateAgency.Data
         [Key]
         public int Id { get; set; }
 
-        public double DealShare { get; set; }
+        public double? DealShare { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Demand> Demand { get; set; }

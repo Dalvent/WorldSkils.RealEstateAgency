@@ -87,7 +87,7 @@
     <Compile Include="Core\EqualsFilter.cs" />
     <Compile Include="Core\EstleType.cs" />
     <Compile Include="Core\Ex\UserActionException.cs" />
-    <Compile Include="Core\FilterWithPattern.cs" />
+    <Compile Include="Filterrs\FilterWithPattern.cs" />
     <Compile Include="Filterrs\DemandsOfRealtorFIlter.cs" />
     <Compile Include="Filterrs\DemandsOfClientFIlter.cs" />
     <Compile Include="Filterrs\IFilter.cs" />
@@ -115,6 +115,12 @@
     <Compile Include="Data\Supply.cs" />
     <Compile Include="Filterrs\SuppliesOfClientFIlter.cs" />
     <Compile Include="Filterrs\SuppliesOfRealtorFIlter.cs" />
+    <Compile Include="Pages\Deal\AddEditDealPage.xaml.cs">
+      <DependentUpon>AddEditDealPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Deal\DealsPage.xaml.cs">
+      <DependentUpon>DealsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Demand\AddEditDemandLandPage.xaml.cs">
       <DependentUpon>AddEditDemandLandPage.xaml</DependentUpon>
     </Compile>
@@ -157,6 +163,14 @@
     <Compile Include="Pages\Realtor\RealtorsPage.xaml.cs">
       <DependentUpon>RealtorsPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\Deal\AddEditDealPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Deal\DealsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Demand\AddEditDemandLandPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -298,6 +312,7 @@
   <ItemGroup>
     <Resource Include="Resources\districts.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

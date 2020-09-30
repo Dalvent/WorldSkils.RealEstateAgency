@@ -15,6 +15,7 @@ namespace RealEstateAgency.Data
         {
             Deal = new HashSet<Deal>();
         }
+
         [Key]
         public int Id { get; set; }
         public int ClientId { get; set; }
@@ -31,5 +32,10 @@ namespace RealEstateAgency.Data
 
         public virtual Realtor Realtor { get; set; }
         public virtual Estate Estate { get; set; }
+
+       public override string ToString()
+        {
+            return Estate.ToString() + $" от {Client}";
+        }
     }
 }

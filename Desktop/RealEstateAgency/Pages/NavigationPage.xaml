@@ -15,6 +15,7 @@
             <Button Width="200" Name="EstleButton" Content="Недвижимость" Click="EstleButton_Click"/>
             <Button Width="200" Name="SupplyButton" Content="Предложение" Click="SupplyButton_Click"/>
             <Button Width="200" Name="DemandButton" Content="Потребность" Click="DemandButton_Click"/>
+            <Button Width="200" Name="DealButton" Content="Сделка" Click="DealButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -13,5 +13,18 @@ namespace RealEstateAgency.Data
 
         public int RoomCount { get; set; }
         public override EstleType EstleType => EstleType.Flat;
+        public override decimal CalculateCommission(decimal price)
+        {
+            decimal constCommision = 36000;
+            decimal persentComison = price / 100 * 1;
+            return constCommision + persentComison;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() +
+                $"этажи {Floor};" +
+                $"комнаты: {RoomCount};";
+        }
     }
 }
