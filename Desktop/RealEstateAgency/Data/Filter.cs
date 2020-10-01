@@ -51,5 +51,62 @@ namespace RealEstateAgency.Data
                 $"цена:{MinPrice}-{MaxPrice}; " +
                 $"площадь:{MinArea}-{MaxArea};";
         }
+
+        public virtual bool IsEstleSuitable(Estate estate)
+        {
+            if(estate.EstleType != EstleType) return false;
+
+            if(estate.City != null)
+            {
+                if(estate.City != City)
+                    return false;
+            }
+
+            if(estate.Street != null)
+            {
+                if(estate.Street != Street)
+                    return false;
+            }
+
+            if(estate.HouseNum != null)
+            {
+                if(estate.HouseNum != HouseNum)
+                    return false;
+            }
+
+            if(estate.Price != null && MinPrice != null)
+            {
+                if(estate.Price < MinPrice)
+                    return false;
+            }
+            if(estate.Price != null && MaxPrice != null)
+            {
+                if(estate.Price > MaxPrice)
+                    return false;
+            }
+
+            if(estate.Area != null && MinArea != null)
+            {
+                if(estate.Area < MinArea)
+                    return false;
+            }
+            if(estate.Area != null && MaxArea != null)
+            {
+                if(estate.Area > MaxArea)
+                    return false;
+            }
+
+            if(MinCoordinateLatitude != null || estate.CoordinateLatitude < MinCoordinateLatitude)
+                return false;
+            if(MaxCoordinateLatitude != null || estate.CoordinateLatitude > MaxCoordinateLatitude)
+                return false;
+
+            if(MinCoordinateLongitude != null || estate.CoordinateLongitude < MinCoordinateLongitude)
+                return false;
+            if(MaxCoordinateLongitude != null || estate.CoordinateLongitude > MaxCoordinateLongitude)
+                return false;
+
+            return true;
+        }
     }
 }

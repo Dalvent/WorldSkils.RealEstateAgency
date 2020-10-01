@@ -38,7 +38,11 @@
         <TextBox Name="SupplinderRealtorCommisionTextBox" Grid.Row="4" Grid.Column="1" IsReadOnly="True"/>
         <TextBox Name="DemanderRealtorCommisionTextBox" Grid.Row="5" Grid.Column="1" IsReadOnly="True"/>
         <TextBox Name="ComponyCommisionTextBox" Grid.Row="6" Grid.Column="1" IsReadOnly="True"/>
-
+        <StackPanel Grid.Row="7">
+            <RadioButton Name="NoAutoChoose" Content="Ручной режим" Foreground="#FF37474F" IsChecked="True" Checked="NoAutoChoose_Checked"/>
+            <RadioButton Name="AutoSupplyChoose" Content="Подбирать предложение под потребность" Foreground="#FF37474F" Checked="AutoFillingStateRadioButton_Checked"/>
+            <RadioButton Name="AutoDemandChoose" Content="Подбирать потребность под предложение" Foreground="#FF37474F" Checked="AutoFillingStateRadioButton_Checked"/>
+        </StackPanel>
         <Button Name="SaveButton" Content="Сохранить" Grid.Row="7" Grid.Column="1" Click="SaveButton_Click"/>
     </Grid>
 </Page>

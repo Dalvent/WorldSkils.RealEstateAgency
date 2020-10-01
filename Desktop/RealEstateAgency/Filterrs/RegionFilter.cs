@@ -34,7 +34,8 @@ namespace RealEstateAgency.Core
             {
                 var itemEstle = item as Estate;
                 if(itemEstle == null || 
-                    !(itemEstle.CoordinateLatitude.HasValue && itemEstle.CoordinateLongitude.HasValue)) 
+                    !(itemEstle.CoordinateLatitude.HasValue 
+                    && itemEstle.CoordinateLongitude.HasValue)) 
                     continue;
 
                 if(IsPointIn(polygon, new PointF(

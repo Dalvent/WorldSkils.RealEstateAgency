@@ -14,7 +14,7 @@ namespace RealEstateAgency.Data
         public int Id { get; set; }
 
         [Column(TypeName = "money")]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
         public double? Area { get; set; }
         public int? HouseNum { get; set; }
         public int? FlatNum { get; set; }
@@ -30,20 +30,20 @@ namespace RealEstateAgency.Data
 
         public abstract decimal CalculateCommission(decimal price);
 
-        public string FullAddress 
+        public string FullAddress
         {
             get
             {
                 string address = String.Empty;
-                address += City != null ? City + " " : String.Empty; 
+                address += City != null ? City + " " : String.Empty;
                 address += Street != null ? Street + " " : String.Empty;
                 address += HouseNum != null ? HouseNum + " " : String.Empty;
                 address += FlatNum != null ? FlatNum + " " : String.Empty;
                 return address;
             }
-        } 
-        public string CoodrinateString 
-        { 
+        }
+        public string CoodrinateString
+        {
             get
             {
                 var coodrdinate = String.Empty;
@@ -52,7 +52,7 @@ namespace RealEstateAgency.Data
                 coodrdinate += CoordinateLongitude.ToString();
                 return coodrdinate;
             }
-        } 
+        }
         public abstract EstleType EstleType { get; }
         public string TypeName => EstleTypeConverter.ToString(EstleType);
 

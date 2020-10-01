@@ -35,5 +35,12 @@ namespace RealEstateAgency.Data
         {
             return Filter.ToString() + $" от {Client}";
         }
+
+        public bool IsSuitableSupply(Supply supply)
+        {
+            return Filter.IsEstleSuitable(supply.Estate) 
+                && supply.Price >= Filter.MinPrice
+                && supply.Price <= Filter.MaxPrice;
+        }
     }
 }

@@ -33,12 +33,7 @@ namespace RealEstateAgency.Pages
 
             if(editDeal == null)
             {
-                SupplyComboBox.ItemsSource = AgencyModel.Instance.Supply
-                    .Where(item => item.Deal.Count == 0)
-                    .ToList();
-                DemandComboBox.ItemsSource = AgencyModel.Instance.Demand
-                    .Where(item => item.Deal.Count == 0)
-                    .ToList();
+                FillComboBoxStandart();
             }
             else
             {
@@ -82,18 +77,70 @@ namespace RealEstateAgency.Pages
 
         private void SupplyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(SupplyComboBox.SelectedItem == null)
+                return;
+
             if(DemandComboBox.SelectedItem != null)
             {
                 FillCommissionTextBoxes();
+            }
+
+            if(AutoDemandChoose.IsChecked == true)
+            {
+                FillDemandComboBoxBySupply((Supply)SupplyComboBox.SelectedItem);
             }
         }
 
         private void DemandComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(DemandComboBox.SelectedItem == null)
+                return;
+
             if(SupplyComboBox.SelectedItem != null)
             {
                 FillCommissionTextBoxes();
             }
+
+            if(AutoSupplyChoose.IsChecked == true)
+            {
+                FillSupplyComboBoxByDemand((Demand)DemandComboBox.SelectedItem);
+            }
+        }
+
+        private void AutoFillingStateRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ClearComboBoxItems();
+            FillComboBoxStandart();
+        }
+        private void FillComboBoxStandart()
+        {
+            SupplyComboBox.ItemsSource = AgencyModel.Instance.Supply
+                    .Where(item => item.Deal.Count == 0)
+                    .ToList();
+            DemandComboBox.ItemsSource = AgencyModel.Instance.Demand
+                    .Where(item => item.Deal.Count == 0)
+                    .ToList();
+        }
+        private void FillSupplyComboBoxByDemand(Demand chosenDemand)
+        {
+            SupplyComboBox.ItemsSource = AgencyModel.Instance.Supply.ToList()
+                .Where(item => item.IsSuitableSupply(chosenDemand) == true);
+        }
+        private void FillDemandComboBoxBySupply(Supply chosenSupply)
+        {
+            DemandComboBox.ItemsSource = AgencyModel.Instance.Demand.ToList()
+                .Where(item => item.IsSuitableSupply(chosenSupply) == true);
+        }
+        private void ClearComboBoxItems()
+        {
+            SupplyComboBox.SelectedIndex = -1;
+            DemandComboBox.SelectedIndex = -1;
+        }
+
+        private void NoAutoChoose_Checked(object sender, RoutedEventArgs e)
+        {
+            FillComboBoxStandart();
+            ClearComboBoxItems();
         }
     }
 }

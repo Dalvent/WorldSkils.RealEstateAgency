@@ -25,5 +25,25 @@ namespace RealEstateAgency.Data
             return base.ToString() + $" этажи: {MinFloorCount}-{MaxFloorCount};" +
                 $" комнаты: {MinRoomCount}-{MaxRoomCount}";
         }
+
+        public override bool IsEstleSuitable(Estate estate)
+        {
+            if(!base.IsEstleSuitable(estate)) 
+                return false;
+
+            var houseEstle = (House)estate;
+
+            if(MinFloorCount != null || houseEstle.FloorCount < MinFloorCount)
+                return false;
+            if(MaxFloorCount != null || houseEstle.FloorCount > MaxFloorCount)
+                return false;
+
+            if(MinRoomCount != null || houseEstle.RoomCount < MinRoomCount)
+                return false;
+            if(MaxRoomCount != null || houseEstle.RoomCount > MaxRoomCount)
+                return false;
+
+            return true;
+        }
     }
 }

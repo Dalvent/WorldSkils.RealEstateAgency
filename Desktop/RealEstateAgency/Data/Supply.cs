@@ -33,9 +33,16 @@ namespace RealEstateAgency.Data
         public virtual Realtor Realtor { get; set; }
         public virtual Estate Estate { get; set; }
 
-       public override string ToString()
+        public override string ToString()
         {
             return Estate.ToString() + $" от {Client}";
+        }
+
+        public bool IsSuitableSupply(Demand demand)
+        {
+            return demand.Filter.IsEstleSuitable(Estate)
+                && Price >= demand.Filter.MinPrice
+                && Price <= demand.Filter.MaxPrice;
         }
     }
 }
