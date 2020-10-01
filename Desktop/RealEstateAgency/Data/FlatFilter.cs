@@ -19,5 +19,11 @@ namespace RealEstateAgency.Data
         public int? MaxRoomCount { get; set; }
 
         public override EstleType EstleType => EstleType.Flat;
+
+        public override string ToString()
+        {
+            return base.ToString() + $" этажи: {MinFloor}-{MaxFloor};" +
+                $" комнаты: {MinRoomCount}-{MaxRoomCount}";
+        }
     }
 }

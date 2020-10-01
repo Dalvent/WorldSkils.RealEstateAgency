@@ -28,6 +28,8 @@ namespace RealEstateAgency.Data
         [StringLength(50)]
         public string Street { get; set; }
 
+        public abstract decimal CalculateCommission(decimal price);
+
         public string FullAddress 
         {
             get
@@ -56,7 +58,9 @@ namespace RealEstateAgency.Data
 
         public override string ToString()
         {
-            return $"Стоймость: {Price}; Адрес: {FullAddress}";
+            return $"{TypeName} {FullAddress} " +
+                $"цена:{Price}; " +
+                $"площадь:{Area};";
         }
 
         public virtual ICollection<Supply> Supplies { get; set; }

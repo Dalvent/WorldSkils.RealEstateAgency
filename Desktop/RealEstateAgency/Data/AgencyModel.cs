@@ -45,10 +45,6 @@ namespace RealEstateAgency.Data
                 .HasForeignKey(e => e.ClientId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Deal>()
-                .Property(e => e.Commission)
-                .HasPrecision(19, 4);
-
             modelBuilder.Entity<Demand>()
                 .HasMany(e => e.Deal)
                 .WithRequired(e => e.Demand)

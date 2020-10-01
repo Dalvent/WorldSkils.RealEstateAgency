@@ -70,6 +70,26 @@ namespace RealEstateAgency
             ImportDemandFlat(directoryPath);
             ImportDemandHouse(directoryPath);
             ImportDemandLand(directoryPath);
+            ImportDeals(directoryPath);
+        }
+
+        private void ImportDeals(string directoryPath)
+        {
+            var dealFile = new StreamReader(directoryPath + @"/deals.txt", Encoding.UTF8);
+            dealFile.ReadLine();
+            while(!dealFile.EndOfStream)
+            {
+                // Id;Demand_Id;Supply_Id
+                var dealRow = dealFile.ReadLine().Split(';');
+                var dealImport = new Deal();
+                dealImport.Id = Convert.ToInt32(dealRow[0]);
+                dealImport.DemandId = Convert.ToInt32(dealRow[1]);
+                dealImport.SupplyId = Convert.ToInt32(dealRow[2]);
+
+                AgencyModel.Instance.Deal.Add(dealImport);
+            }
+
+            dealFile.Dispose();
         }
 
         private void ImportDemandFlat(string directoryPath)

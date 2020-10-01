@@ -44,5 +44,12 @@ namespace RealEstateAgency.Data
         public string TypeName => EstleTypeConverter.ToString(EstleType);
         public abstract EstleType EstleType { get; }
         public virtual Demand Demand { get; set; }
+
+        public override string ToString()
+        {
+            return $"{TypeName} {FullAddress} " +
+                $"цена:{MinPrice}-{MaxPrice}; " +
+                $"площадь:{MinArea}-{MaxArea};";
+        }
     }
 }
