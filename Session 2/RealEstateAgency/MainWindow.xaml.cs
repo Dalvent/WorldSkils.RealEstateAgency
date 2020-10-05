@@ -33,7 +33,7 @@ namespace RealEstateAgency
             //Database.SetInitializer(new DropCreateDatabaseAlways<AgencyModel>());
             //ImportData(@"..\..\Resources\Data");
             //AgencyModel.Instance.SaveChanges();
-            ResurceData.Load(@"..\..\Resources");
+            //ResurceData.Load(@"..\..\Resources");
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
