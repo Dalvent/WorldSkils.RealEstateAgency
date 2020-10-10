@@ -1,0 +1,7 @@
+<resources>
+    <string-array name="realtor_event_type">
+        <item name="client_meeting">Встреча</item>
+        <item name="show">Показ</item>
+        <item name="planned_call">Звонок</item>
+    </string-array>
+</resources>

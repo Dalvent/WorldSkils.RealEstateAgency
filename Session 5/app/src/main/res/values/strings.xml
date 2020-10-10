@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RealtorHelper</string>
+    <string name="add_event_title">Добавление события</string>
+    <string name="add_event_start_data_title">Дата начала</string>
+    <string name="add_event_start_time_title">Время начала</string>
+    <string name="add_event_type_title">Тип</string>
+    <string name="add_duraction_title">Длительность</string>
+    <string name="add_comment_title">Комментарий</string>
+    <string name="set_date_title">Выбрать дату</string>
+    <string name="set_time_title">Выбрать время</string>
+    <string name="add_title">Добавить</string>
+</resources>

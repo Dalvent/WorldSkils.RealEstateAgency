@@ -1,0 +1,3 @@
+<resources>
+    <string name="realtor_events_file_path">realtorEvent.csv</string>
+</resources>
