@@ -2,6 +2,7 @@ package com.example.realtorhelper;
 
 import androidx.annotation.Nullable;
 
+import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class RealtorEvent {
+public class RealtorEvent implements Serializable {
     private Calendar startDateTime;
     private RealtorEventType eventType;
     private Time duraction;

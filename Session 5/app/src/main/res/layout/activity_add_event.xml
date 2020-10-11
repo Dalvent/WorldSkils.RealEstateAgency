@@ -47,14 +47,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_event_type_title" />
-            <Spinner
+            <Spinner android:id="@+id/eventType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:entries="@array/realtor_event_type" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/add_event_start_data_title" />
+                android:text="@string/add_duraction_title" />
             <EditText android:id="@+id/duractionTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,15 +66,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_comment_title" />
-            <EditText
+            <EditText android:id="@+id/comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="14" />
+                android:ems="14"/>
         </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add_title"/>
+            android:text="@string/add_title"
+            android:onClick="save"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
