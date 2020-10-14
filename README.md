@@ -1,1 +1,2 @@
-# WorldSkillTask2018-RealEstateAgency
+# Задание с World SkillTask 2018. Агентсво недвижимости.
+Информация о задании и ресурсы находятся в папке TaskInfo
