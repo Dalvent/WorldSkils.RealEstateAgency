@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="view_small_width">12mm</dimen>
+    <dimen name="view_average_width">18mm</dimen>
+    <dimen name="view_large_width">24mm</dimen>
+    <dimen name="view_padding">10px</dimen>
+    <dimen name="view_margin">15px</dimen>
+    <dimen name="view_corner_radius">1mm</dimen>
+
+    <!--Button-->
+    <dimen name="view_button_height">7mm</dimen>
+</resources>

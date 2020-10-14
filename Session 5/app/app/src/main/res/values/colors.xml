@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_0">#04ADFF</color>
+    <color name="blue_1">#0091EA</color>
+    <color name="blue_2">#0081D1</color>
+    <color name="green_0">#00D9BB</color>
+    <color name="green_1">#00BFA5</color>
+    <color name="green_2">#00A68F</color>
+    <color name="red_0">#FF4A6D</color>
+    <color name="red_1">#FF1744</color>
+    <color name="red_2">#E3002C</color>
+    <color name="yellow_0">#FFF6A5</color>
+    <color name="yellow_1">#FFEE58</color>
+    <color name="yellow_2">#FFE60C</color>
+    <color name="orange_0">#FF9C1A</color>
+    <color name="orange_1">#FF9100</color>
+    <color name="orange_2">#E68300</color>
+    <color name="gray_0">#F7F9F9</color>
+    <color name="gray_1">#ECEFF1</color>
+    <color name="gray_2">#CFD8DC</color>
+    <color name="gray_3">#B0BEC5</color>
+    <color name="gray_4">#78909C</color>
+    <color name="gray_5">#546E7A</color>
+    <color name="gray_6">#37474F</color>
+    <color name="gray_7">#263238</color>
+    <color name="TextPrimary">#37474F</color>
+    <color name="TextParangraph">#546E7A</color>
+    <color name="TextSecondary">#78909C</color>
+    <color name="TextTetriary">#B0BEC5</color>
+    <color name="Background">#FFFFFF</color>
+</resources>

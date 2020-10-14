@@ -1,0 +1,48 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/blue_0</item>
+        <item name="colorPrimaryDark">@color/blue_1</item>
+        <item name="colorAccent">@color/blue_0</item>
+        <item name="android:buttonStyle">@style/ButtonTheme</item>
+        <item name="font">@font/roboto_medium</item>
+        <item name="android:textColor">@color/TextParangraph</item>
+        <item name="android:editTextStyle">@color/TextParangraph</item>
+    </style>
+
+    <style name="StandartView" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:layout_margin">@dimen/view_margin</item>
+        <item name="android:padding">@dimen/view_padding</item>
+    </style>
+
+    <style name="SmallView" parent="StandartView">
+        <item name="android:width">@dimen/view_small_width</item>
+    </style>
+
+    <style name="AverangeView" parent="StandartView">
+        <item name="android:width">@dimen/view_average_width</item>
+    </style>
+
+    <style name="LargeView" parent="StandartView">
+        <item name="android:width">@dimen/view_large_width</item>
+    </style>
+
+    <style name="ButtonTheme" parent="AverangeView">
+        <item name="android:background">@drawable/bordered_button</item>
+        <item name="android:textColor">@color/gray_1</item>
+        <item name="android:textSize">18dp</item>
+        <item name="font">@font/roboto_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:height">@dimen/view_button_height</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="EditTextTheme" parent="StandartView">
+        <item name="android:background">@drawable/bordered_edittext</item>
+    </style>
+</resources>
