@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">RealtorHelper</string>
+    <string name="add_event_title">Добавление события</string>
+    <string name="add_event_start_data_title">Дата начала</string>
+    <string name="add_event_start_time_title">Время начала</string>
+    <string name="add_event_type_title">Тип</string>
+    <string name="add_duraction_title">Длительность</string>
+    <string name="add_comment_title">Комментарий</string>
+    <string name="set_date_title">Выбрать дату</string>
+    <string name="set_time_title">Выбрать время</string>
+    <string name="add_title">Добавить</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_on_today">На сегодня</string>
+</resources>
